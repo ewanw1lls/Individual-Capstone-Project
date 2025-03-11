@@ -33,7 +33,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["court-finder-courts-0bc1e2d6a141.herokuapp.com", "localhost"]
+ALLOWED_HOSTS = ["court-finder-courts-0bc1e2d6a141.herokuapp.com", "localhost", "127.0.0.1" ]
 
 CSRF_TRUSTED_ORIGINS = ['https://*.herokuapp.com']
 
@@ -48,8 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'courts',
-    'reviews',
-    'users',
+#   'reviews',
+#   'users',
     'cloudinary_storage',
     'cloudinary',
 ]
