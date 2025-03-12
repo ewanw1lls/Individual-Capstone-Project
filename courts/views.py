@@ -1,8 +1,15 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views import generic
+from .models import Court
+# from django.views.generic import TemplateView
 
-class HomePage(TemplateView):
-    """
-    Displays home page"
-    """
-    template_name = 'index.html'
+#views go below
+
+# class HomePage(TemplateView):
+#     """
+#     Displays home page"
+#     """
+#     template_name = 'index.html'
+
+class CourtList(generic.ListView):
+    model = Court
