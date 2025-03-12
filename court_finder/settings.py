@@ -48,8 +48,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'courts',
-#   'reviews'
-#   'users',
     'cloudinary_storage',
     'cloudinary',
 ]
