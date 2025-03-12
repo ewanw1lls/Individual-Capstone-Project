@@ -22,3 +22,11 @@ class Court(models.Model):
     def __str__(self):
         return self.title
     
+class Review(models.Model):
+    Court = models.ForeignKey(
+        Court, on_delete=models.CASCADE, related_name="reviews")
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="reviewer")
+    body = models.TextField()
+    approved = models.BooleanField(default=False)
+    created_on = models.DateTimeField(auto_now_add=True)
