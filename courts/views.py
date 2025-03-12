@@ -13,3 +13,4 @@ from .models import Court
 
 class CourtList(generic.ListView):
     model = Court
+    template_name = "courts/court_list.html"

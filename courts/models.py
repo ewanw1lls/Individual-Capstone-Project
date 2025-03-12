@@ -17,6 +17,7 @@ class Court(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     rating = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True, validators=[MinValueValidator(0.0), MaxValueValidator(10.0)])  # Rating from 0.0 to 10.0
     image = models.ImageField(upload_to='court_images/', null=True, blank=True)  # Court image
+    excerpt = models.TextField(blank=True)
     updated_on = models.DateTimeField(auto_now=True)
     
     class Meta:
