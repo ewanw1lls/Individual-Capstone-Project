@@ -15,7 +15,7 @@
                                     <p class="author">Author: {{ court.author }}</p>
                                 </div>
                             </div>
-                            <a href="#" class="court-link">
+                            <a href="{% url 'court_detail' court.slug %}" class="court-link">
                                 <h2 class="card-title">{{ court.title }}</h2>
                                 <p class="card-text">{{ court.excerpt }}</p>
                             </a>
