@@ -1,34 +1,90 @@
 {% extends 'base.html' %} {% block content %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 <div class="masthead">
-    <div class="container">
-        <div class="row g-0">
-            <div class="col-md-6 masthead-text">
-                <!-- Court title goes in these h1 tags -->
-                <h1 class="court-title">{{ court.title }}</h1>
-                <!-- court author goes before the | tcourt's created date goes after -->
-                <p class="court-subtitle">{{ court.author }} | {{ court.created_on }}</p>
-            </div>
-            <div class="d-none d-md-block col-md-6 masthead-image">
-                <img src="{% static 'images/generic-court.jpg' %}" class="scale" alt="placeholder">
-            </div>
-        </div>
+  <div class="container">
+    <div class="row g-0">
+      <div class="col-md-6 masthead-text">
+        <!-- Court title goes in these h1 tags -->
+        <h1 class="court-title">{{ court.title }}</h1>
+        <!-- court author goes before the | tcourt's created date goes after -->
+        <p class="court-subtitle">{{ court.author }} | {{ court.created_on }}</p>
+      </div>
+      <div class="d-none d-md-block col-md-6 masthead-image">
+        <img src="{% static 'images/generic-court.jpg' %}" class="scale" alt="placeholder">
+      </div>
     </div>
+  </div>
 </div>
 
 <div class="container">
-    <div class="row">
-        <div class="col card mb-4  mt-3 left  top">
-            <div class="card-body">
-                <!-- The court content goes inside the card-text. -->
-                <!-- Use the | safe filter inside the template tags -->
-                <p class="card-text">
-                    {{ court.content | safe }}
-                </p>
-            </div>
-        </div>
+  <div class="row">
+    <div class="col card mb-4  mt-3 left  top">
+      <div class="card-body">
+        <!-- The court content goes inside the card-text. -->
+        <!-- Use the | safe filter inside the template tags -->
+        <p class="card-text">
+          {{ court.content | safe }}
+        </p>
+      </div>
     </div>
+  </div>
+  <!-- Displaying count of reviews -->
+  <div class="row">
+    <div class="col-12">
+      <strong class="text-secondary">
+        <i class="far fa-reviews"></review_count }} </strong> </div> <div class="col-12">
+          <hr>
+    </div>
+  </div>
+  <!-- Displaying reviews -->
+  <div class="row">
+    <div class="col-md-8 card mb-4  mt-3 ">
+      <h3>Reviews:</h3>
+      <div class="card-body">
+        <!-- We want a for loop inside the empty control tags
+          to iterate through each review in reviews -->
+        {% for review in reviews %}
+        <div class="p-2 reviews
+          {% if not review.approved and review.author == user %}
+          faded{% elif not review.approved %} d-none{% endif %}">
+          <p class="font-weight-bold">
+            {{ review.author }}
+            <span class="font-weight-normal">
+              {{ review.created_on }}
+            </span> wrote:
+          </p>
+          <div id="review{{ review.id }}">
+            {{ review.body | linebreaks }}
+          </div>
+          {% if not review.approved and review.author == user %}
+          <p class="approval">
+            This review is awaiting approval
+          </p>
+          {% endif %}
+        </div>
+        <!-- Our for loop ends here -->
+        {% endfor %}
+      </div>
+    </div>
+    <!-- Creating New Reviews -->
+    <div class="col-md-4 card mb-4 mt-3">
+      <div class="card-body">
+        {% if user.is_authenticated %}
+        <h3>Leave a review:</h3>
+        <p>Posting as: {{ user.username }}</p>
+        <form id="reviewForm" method="post" style="margin-top: 1.3em;">
+          {{ review_form | crispy }}
+          {% csrf_token %}
+          <button id="submitButton" type="submit" class="btn btn-signup btn-lg">Submit</button>
+        </form>
+        {% else %}
+        <p>Log in to leave a review</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
 </div>
 
 {% endblock content %}
