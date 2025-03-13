@@ -14,4 +14,5 @@ from .models import Court
 class CourtList(generic.ListView):
     model = Court
     queryset = Court.objects.filter(status=1)
-    template_name = "courts/court_list.html"
+    template_name = "courts/index.html"
+    paginate_by = 6
