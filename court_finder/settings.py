@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'courts',
     'cloudinary_storage',
     'cloudinary',
+    'django_summernote',
 ]
 
 MIDDLEWARE = [
