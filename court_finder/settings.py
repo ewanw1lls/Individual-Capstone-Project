@@ -33,7 +33,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["court-finder-courts-0bc1e2d6a141.herokuapp.com", "localhost", "127.0.0.1" ]
+ALLOWED_HOSTS = ["court-finder-courts-0bc1e2d6a141.herokuapp.com", "localhost", "127.0.0.1"]
 
 CSRF_TRUSTED_ORIGINS = ["https://*.codeinstitute-ide.net/", "https://*.herokuapp.com"]
 
