@@ -1,7 +1,7 @@
-from django.db import models
-# from blog walkthrough v
-from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
+from cloudinary.models import CloudinaryField
+from django.db import models
+from django.contrib.auth.models import User
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
@@ -15,6 +15,7 @@ class Court(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="courts"
     )
+    profile_image = CloudinaryField('image', default='placeholder')
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
