@@ -14,7 +14,6 @@ from .forms import ReviewForm
 #     """
 #     template_name = 'index.html'
 
-
 class CourtList(generic.ListView):
     model = Court
     queryset = Court.objects.filter(status=1)
