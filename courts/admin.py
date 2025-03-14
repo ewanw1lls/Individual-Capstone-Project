@@ -5,6 +5,7 @@ from django_summernote.admin import SummernoteModelAdmin
 # Register your models here.
 admin.site.register(Review)
 
+
 @admin.register(Court)
 class CourtAdmin(SummernoteModelAdmin):
 

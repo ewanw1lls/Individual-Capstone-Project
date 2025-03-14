@@ -33,9 +33,16 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["court-finder-courts-0bc1e2d6a141.herokuapp.com", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = [
+    "court-finder-courts-0bc1e2d6a141.herokuapp.com",
+    "localhost",
+    "127.0.0.1"
+]
 
-CSRF_TRUSTED_ORIGINS = ["https://*.codeinstitute-ide.net/", "https://*.herokuapp.com"]
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.codeinstitute-ide.net/",
+    "https://*.herokuapp.com"
+]
 
 
 # Application definition
@@ -52,7 +59,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'crispy_forms',
-    'crispy_bootstrap5',   
+    'crispy_bootstrap5',
     'django_summernote',
     'courts',
     'cloudinary_storage',
