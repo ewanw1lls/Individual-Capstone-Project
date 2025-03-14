@@ -8,8 +8,8 @@
       <div class="col-md-6 masthead-text">
         <!-- Court title goes in these h1 tags -->
         <h1 class="court-title">{{ court.title }}</h1>
-        <!-- court author goes before the | tcourt's created date goes after -->
-        <p class="court-subtitle">{{ court.author }} | {{ court.created_on }}</p>
+        <!-- court author, court created, rating-->
+        <p class="court-subtitle">{{ court.author }} | {{ court.created_on }} | {{ court.rating }}</p>
       </div>
       <div class="d-none d-md-block col-md-6 masthead-image">
         <img src="{% static 'images/generic-court.jpg' %}" class="scale" alt="placeholder">
