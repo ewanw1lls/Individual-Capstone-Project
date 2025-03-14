@@ -33,6 +33,9 @@ class Court(models.Model):
     excerpt = models.TextField(blank=True)
     updated_on = models.DateTimeField(auto_now=True)
 
+    # going to new fields for indoor/outdoor, location
+    # (longitude/latitude/address),
+
     class Meta:
         ordering = ["-created_on"]
 

@@ -4,6 +4,57 @@
 
 
 <!-- index.html content starts here -->
+<div class="container mt-4">
+    <header class="text-center mb-4">
+        <h1>CORNWALL BASKETBALL COURT FINDER</h1>
+    </header>
+
+    <div class="row">
+        <!-- Map Section -->
+        <div class="col-md-6">
+            <div id="map" class="border p-4 text-center" style="height: 300px;">
+                <p>MAP HERE</p>
+            </div>
+        </div>
+
+        <!-- Courts & Search Section -->
+        <div class="col-md-6">
+            <!-- Nearby Courts List -->
+            <div class="mb-3">
+                <h4>Courts Near You:</h4>
+                <ul class="list-group">
+                    {% for court in courts %}
+                        <li class="list-group-item">
+                            <strong>{{ court.name }}</strong> - Rating: {{ court.rating }}
+                        </li>
+                    {% empty %}
+                        <li class="list-group-item">No courts found.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <!-- Postcode Search -->
+            <form method="POST">
+                {% csrf_token %}
+                <label for="postcode" class="form-label">Enter your Postcode Below:</label>
+                <input type="text" id="postcode" name="address" class="form-control mb-2" placeholder="e.g. TR7 0G9" required>
+                <button type="submit" class="btn btn-primary w-100">Find Courts</button>
+            </form>
+
+            <!-- Court Type Filter -->
+            <div class="mt-3 text-center">
+                <h5>Court Type:</h5>
+                <button class="btn btn-outline-secondary">Indoor</button>
+                <button class="btn btn-outline-secondary">Outdoor</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<header class="text-center mb-4">
+    <h1>COURTS:</h1>
+</header>
+
 <div class="container-fluid">
     <div class="row">
         <!-- Blog Entries Column -->

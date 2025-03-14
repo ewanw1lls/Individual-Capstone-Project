@@ -4,6 +4,8 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .models import Court, Review
 from .forms import ReviewForm
+
+
 # from django.views.generic import TemplateView
 
 # class based views go below
@@ -13,6 +15,7 @@ from .forms import ReviewForm
 #     Displays home page"
 #     """
 #     template_name = 'index.html'
+
 
 class CourtList(generic.ListView):
     model = Court
