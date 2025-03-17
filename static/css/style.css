@@ -50,6 +50,13 @@ h6 {
     background-color: #ff8066;
 }
 
+/* Add styles for pressed buttons */
+.btn.active, .btn.pressed {
+    background-color: #ff8066; /* Highlight color for active/pressed button */
+    border-color: #c34a36;
+    color: #242323;
+}
+
 /* Container for the masthead to align items */
 .masthead {
     padding: 30px 0;
@@ -111,6 +118,7 @@ h6 {
     border-radius: 8px;
     /* Optional: adds rounded corners to the image */
 }
+
 
 /* review styles */
 

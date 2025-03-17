@@ -36,7 +36,7 @@
             <!-- Postcode Search -->
             <form method="POST">
                 {% csrf_token %}
-                <label for="postcode" class="form-label">Enter your Postcode Below:</label>
+                <label for="postcode" class="form-label"><h4>Enter your Postcode Below:</h4></label>
                 <input type="text" id="postcode" name="address" class="form-control mb-2" placeholder="e.g. TR7 0G9" required>
                 <button type="submit" class="btn btn-primary w-100">Find Courts</button>
             </form>
@@ -44,8 +44,8 @@
             <!-- Court Type Filter -->
             <div class="mt-3 text-center">
                 <h5>Court Type:</h5>
-                <button class="btn btn-outline-secondary">Indoor</button>
-                <button class="btn btn-outline-secondary">Outdoor</button>
+                <button class="btn btn-outline-secondary" id="indoorButton">Indoor</button>
+                <button class="btn btn-outline-secondary" id="outdoorButton">Outdoor</button>
             </div>
         </div>
     </div>
@@ -113,3 +113,4 @@
 
 <!-- index.html content ends here -->
 {% endblock %}
+<script src="{% static 'js/script.js' %}"></script>

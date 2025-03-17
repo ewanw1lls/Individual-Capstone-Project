@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/* CSS Variables */
+:root {
+    --primary-font: "Tinos", sans-serif;
+    --secondary-font: "Montserrat", sans-serif;
+    --primary-color: ,
+        --secondary-color:,
+        --highlight-color: #c34a36,
+        --highlight-color-light: #ff8066,
+}
+
+/* Global styles */
+
+body {
+    background-color: #F9FAFC;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Tinos', sans-serif;
+}
+
+
+/*btn styles*/
+
+.btn-primary {
+    background-color: #c34a36;
+    border-color: #242323;
+}
+
+.btn-primary:hover {
+    background-color: #ff8066;
+}
+
+.btn-outline-secondary {
+    border-color: #242323;
+    color: #FFFFFF;
+    background-color: #c34a36;
+}
+
+.btn-outline-secondary:hover {
+    border-color: #242323;
+    color: #FFFFFF;
+    background-color: #ff8066;
+}
+
+/* Add styles for pressed buttons */
+.btn.active, .btn.pressed {
+    background-color: #ff8066; /* Highlight color for active/pressed button */
+    border-color: #c34a36;
+    color: #242323;
+}
+
+/* Container for the masthead to align items */
+.masthead {
+    padding: 30px 0;
+    /* Adds some padding around the masthead */
+}
+
+/* Flexbox container for the row */
+.masthead .row {
+    display: flex;
+    align-items: center;
+    /* Vertically aligns the content in the center */
+    justify-content: space-between;
+    /* Spaces out the image and text */
+}
+
+/* Style for the text section (court title, author, etc.) */
+.masthead-text {
+    padding-right: 20px;
+    /* Adds some space between the text and the image */
+}
+
+/* Style for the title */
+.court-title {
+    font-family: 'Tinos', serif;
+    /* Your desired font for the title */
+    font-size: 2rem;
+    /* Adjust size as needed */
+    margin-bottom: 10px;
+    /* Adds space between title and subtitle */
+}
+
+/* Style for the subtitle (author, created date, rating) */
+.court-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    /* Your desired font for subtitle */
+    font-size: 1rem;
+    /* Adjust size as needed */
+    color: gray;
+    /* Adjust color as needed */
+}
+
+/* Style for the masthead image */
+.masthead-image {
+    display: flex;
+    /* Enables flex for the image container */
+    justify-content: center;
+    /* Centers the image within the div */
+    align-items: center;
+    /* Vertically centers the image */
+}
+
+.masthead-image img {
+    width: 100%;
+    /* Makes the image fill the container */
+    height: auto;
+    /* Ensures aspect ratio is maintained */
+    max-width: 400px;
+    /* You can adjust this value to control the image size */
+    border-radius: 8px;
+    /* Optional: adds rounded corners to the image */
+}
+
+
+/* review styles */
+
+.col-md-8 i {
+    margin-top: 25px;
+    /* Adds space above the text */
+    display: inline-block;
+    /* Ensures the text and icon are aligned properly */
+}
+
+
+
+/* Media Queries */
+
+/* Mobile Devices (Portrait) - up to 480px */
+@media (max-width: 480px)  /* Styles for mobile devices (portrait) */
+.masthead .row {
+    flex-direction: column; /* Stack the image and text */
+    align-items: center; /* Center align the items */
+}
+
+.masthead-text {
+    padding-right: 0; /* Removes extra padding */
+    text-align: center; /* Centers the text */
+}
+
+.masthead-image {
+    margin-top: 20px; /* Adds space between image and text */
+    width: 100%; /* Ensures the image takes full width */
+}
+
+.masthead-image img {
+    max-width: 100%; /* Ensures the image does not overflow */
+}
+
+/* Adjust font sizes for small devices */
+.court-title {
+    font-size: 1.5rem; /* Slightly smaller title */
+}
+
+.court-subtitle {
+    font-size: 0.9rem; /* Adjust subtitle size */
+}
+
+
+/* Medium Devices - 768px to 1023px (Tablets) */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    /* masthead */
+    .masthead .row {
+        flex-direction: column;
+        /* Stacks image and text on smaller screens */
+    }
+
+    .masthead-text {
+        padding-right: 0;
+        /* Removes the padding on small screens */
+    }
+
+    .masthead-image {
+        margin-top: 20px;
+        /* Adds space between the image and the text when stacked */
+    }
+}
+
+/* Large Devices (Desktops) - 1024px and above */
+@media (min-width: 1024px) {
+
+.masthead .row {
+    flex-direction: row; /* Keep the image and text side by side */
+    justify-content: space-between; /* Add space between items */
+}
+
+.masthead-text {
+    padding-right: 20px; /* Adds some space between text and image */
+    text-align: left; /* Align text to the left */
+}
+
+.masthead-image {
+    width: 40%; /* Adjust the image width for large screens */
+}
+
+.masthead-image img {
+    max-width: 100%; /* Ensures the image doesn't overflow */
+    border-radius: 8px; /* Optional: add rounded corners */
+}
+
+/* Adjust font sizes for larger screens */
+.court-title {
+    font-size: 2.5rem; /* Larger title size */
+}
+
+.court-subtitle {
+    font-size: 1.2rem; /* Larger subtitle size */
+}
+}
