@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .models import Court, Review
 from .forms import ReviewForm
+from .forms import CourtForm
 
 
 # from django.views.generic import TemplateView
@@ -114,3 +115,17 @@ def review_delete(request, slug, review_id):
         )
 
     return HttpResponseRedirect(reverse('court_detail', args=[slug]))
+
+
+def add_court(request):
+    if request.method == "POST":
+        form = CourtForm(request.POST, request.FILES)
+        if form.is_valid():
+            court = form.save(commit=False)
+            court.author = request.user  # Assign logged-in user as author
+            court.save()
+            return redirect("home")  # Redirect to homepage or court list
+    else:
+        form = CourtForm()
+
+    return render(request, "courts/add_court.html", {"form": form})

@@ -37,7 +37,7 @@ h6 {
   .card {
     display: flex;
     flex-direction: column;
-    min-height: 400px; /* Ensures all cards have at least the same height */
+    height: 500px; /* Ensures all cards have at least the same height */
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
@@ -47,7 +47,7 @@ h6 {
   
   .card img {
     width: 100%;
-    height: 180px;
+    height: 200px;
     object-fit: cover;
   }
   
@@ -185,33 +185,34 @@ h6 {
 /* Media Queries */
 
 /* Mobile Devices (Portrait) - up to 480px */
-@media (max-width: 480px)  /* Styles for mobile devices (portrait) */
-.masthead .row {
-    flex-direction: column; /* Stack the image and text */
-    align-items: center; /* Center align the items */
-}
+@media (max-width: 480px) { /* Styles for mobile devices (portrait) */
+    .masthead .row {
+        flex-direction: column; /* Stack the image and text */
+        align-items: center; /* Center align the items */
+    }
 
-.masthead-text {
-    padding-right: 0; /* Removes extra padding */
-    text-align: center; /* Centers the text */
-}
+    .masthead-text {
+        padding-right: 0; /* Removes extra padding */
+        text-align: center; /* Centers the text */
+    }
 
-.masthead-image {
-    margin-top: 20px; /* Adds space between image and text */
-    width: 100%; /* Ensures the image takes full width */
-}
+    .masthead-image {
+        margin-top: 20px; /* Adds space between image and text */
+        width: 100%; /* Ensures the image takes full width */
+    }
 
-.masthead-image img {
-    max-width: 100%; /* Ensures the image does not overflow */
-}
+    .masthead-image img {
+        max-width: 100%; /* Ensures the image does not overflow */
+    }
 
-/* Adjust font sizes for small devices */
-.court-title {
-    font-size: 1.5rem; /* Slightly smaller title */
-}
+    /* Adjust font sizes for small devices */
+    .court-title {
+        font-size: 1.5rem; /* Slightly smaller title */
+    }
 
-.court-subtitle {
-    font-size: 0.9rem; /* Adjust subtitle size */
+    .court-subtitle {
+        font-size: 0.9rem; /* Adjust subtitle size */
+    }
 }
 
 

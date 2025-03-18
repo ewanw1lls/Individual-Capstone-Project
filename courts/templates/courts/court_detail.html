@@ -9,7 +9,7 @@
         <!-- Court title goes in these h1 tags -->
         <h1 class="court-title">{{ court.title }}</h1>
         <!-- court author, court created, rating-->
-        <p class="court-subtitle">{{ court.author }} | {{ court.created_on }} | {{ court.rating }}</p>
+        <p class="court-subtitle">{{ court.author }} | {{ court.created_on }} | {{ court.rating }} <i class="fa-solid fa-star gold-star"></i></p>
       </div>
       <div class="d-none d-md-block col-md-6 masthead-image">
         {% if "placeholder" in court.image.url %}
