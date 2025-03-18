@@ -26,9 +26,7 @@ class Court(models.Model):
             MaxValueValidator(10.0)
         ]
     )  # Rating from 0.0 to 10.0
-    image = models.ImageField(
-        upload_to='court_images/', null=True, blank=True
-    )  # Court image
+    profile_image = CloudinaryField('image', default='placeholder')  # Court image
     excerpt = models.TextField(blank=True)
     updated_on = models.DateTimeField(auto_now=True)
 

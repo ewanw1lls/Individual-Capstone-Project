@@ -12,7 +12,12 @@
         <p class="court-subtitle">{{ court.author }} | {{ court.created_on }} | {{ court.rating }}</p>
       </div>
       <div class="d-none d-md-block col-md-6 masthead-image">
-        <img src="{% static 'images/generic-court.jpg' %}" class="scale" alt="placeholder">
+        {% if "placeholder" in court.image.url %}
+        <img class="card-img-top" src="{% static 'images/default.jpg' %}"
+            alt="placeholder image">
+        {% else %}
+        <img class="card-img-top" src="{{ court.profile_image.url }}">
+        {% endif %}
       </div>
     </div>
   </div>
