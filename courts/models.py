@@ -63,4 +63,3 @@ class CourtForm(forms.ModelForm):
     class Meta:
         model = Court
         fields = ["title", "content", "profile_image", "rating", "excerpt"]
-
