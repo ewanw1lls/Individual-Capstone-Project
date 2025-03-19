@@ -8,11 +8,16 @@
       <div class="col-md-6 masthead-text">
         <!-- Court title goes in these h1 tags -->
         <h1 class="court-title">{{ court.title }}</h1>
-        <!-- court author goes before the | tcourt's created date goes after -->
-        <p class="court-subtitle">{{ court.author }} | {{ court.created_on }}</p>
+        <!-- court author, court created, rating-->
+        <p class="court-subtitle">{{ court.author }} | {{ court.created_on }} | {{ court.rating }} <i class="fa-solid fa-star gold-star"></i></p>
       </div>
       <div class="d-none d-md-block col-md-6 masthead-image">
-        <img src="{% static 'images/generic-court.jpg' %}" class="scale" alt="placeholder">
+        {% if "placeholder" in court.image.url %}
+        <img class="card-img-top" src="{% static 'images/default.jpg' %}"
+            alt="placeholder image">
+        {% else %}
+        <img class="card-img-top" src="{{ court.profile_image.url }}">
+        {% endif %}
       </div>
     </div>
   </div>
@@ -30,18 +35,11 @@
       </div>
     </div>
   </div>
-  <!-- Displaying count of reviews -->
-  <div class="row">
-    <div class="col-12">
-      <strong class="text-secondary">
-        <i class="far fa-reviews"></review_count }} </strong> </div> <div class="col-12">
-          <hr>
-    </div>
-  </div>
+  
   <!-- Displaying reviews -->
   <div class="row">
-    <div class="col-md-8 card mb-4  mt-3 ">
-      <h3>Reviews:</h3>
+    <div class="col-md-8 card mb-4 mt-3">
+     <h3><i class="fa-solid fa-comments"> </i>  Reviews : {{ review_count }}</h3> 
       <div class="card-body">
         <!-- We want a for loop inside the empty control tags
           to iterate through each review in reviews -->
