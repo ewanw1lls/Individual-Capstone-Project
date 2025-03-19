@@ -132,7 +132,7 @@ def add_court(request):
                 court.slug = f"{original_slug}-{counter}"
                 counter += 1
             court.save()
-            court.save()
+            messages.success(request, "Your court has been submitted and is awaiting approval!")  # Success message
             return redirect("home")  # Redirect to homepage or court list
     else:
         form = CourtForm()
