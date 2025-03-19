@@ -1,10 +1,11 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .models import Court, Review
 from .forms import ReviewForm
 from .forms import CourtForm
+from django.utils.text import slugify
 
 
 # from django.views.generic import TemplateView
@@ -123,6 +124,14 @@ def add_court(request):
         if form.is_valid():
             court = form.save(commit=False)
             court.author = request.user  # Assign logged-in user as author
+            court.slug = slugify(court.title)  # Generate slug from title
+            # Ensure slug is unique
+            counter = 1
+            original_slug = court.slug
+            while Court.objects.filter(slug=court.slug).exists():
+                court.slug = f"{original_slug}-{counter}"
+                counter += 1
+            court.save()
             court.save()
             return redirect("home")  # Redirect to homepage or court list
     else:
