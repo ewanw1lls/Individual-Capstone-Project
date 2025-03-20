@@ -11,4 +11,4 @@ class ReviewForm(forms.ModelForm):
 class CourtForm(forms.ModelForm):
     class Meta:
         model = Court
-        fields = ["title", "content", "profile_image", "rating", "excerpt"]
+        fields = ["title", "content", "profile_image", "rating", "excerpt", "field_type"]

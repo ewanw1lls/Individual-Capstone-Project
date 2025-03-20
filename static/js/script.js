@@ -10,3 +10,11 @@
 //     this.classList.add('pressed');
 //     document.getElementById('indoorButton').classList.remove('pressed');
 // });
+
+Microsoft.Maps.ConfigurableMap.createFromConfig(document.getElementById('myMap'), 'https://bingmapsisdk.blob.core.windows.net/isdksamples/configmap2.json', false, null, successCallback, errorCallback);
+function successCallback(mapObj) {
+    document.getElementById('printoutPanel').innerHTML = 'success';
+}
+function errorCallback(message) {
+    document.getElementById('printoutPanel').innerHTML = message;
+}

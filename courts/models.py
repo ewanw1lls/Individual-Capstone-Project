@@ -11,6 +11,13 @@ STATUS = ((0, "Draft"), (1, "Published"))
 
 
 class Court(models.Model):
+    INDOOR = 'Indoor'
+    OUTDOOR = 'Outdoor'
+    FIELD_CHOICES = [
+        (INDOOR, 'Indoor'),
+        (OUTDOOR, 'Outdoor'),
+    ]
+
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
@@ -32,6 +39,13 @@ class Court(models.Model):
     )  # Court image
     excerpt = models.TextField(blank=True)
     updated_on = models.DateTimeField(auto_now=True)
+
+    # Indoor or Outdoor
+    field_type = models.CharField(
+        max_length=7,
+        choices=FIELD_CHOICES,
+        default=OUTDOOR,
+    )
 
     # going to new fields for indoor/outdoor, location
     # (longitude/latitude/address),
@@ -62,4 +76,7 @@ class Review(models.Model):
 class CourtForm(forms.ModelForm):
     class Meta:
         model = Court
-        fields = ["title", "content", "profile_image", "rating", "excerpt"]
+        fields = [
+            "title", "content", "profile_image", 
+            "rating", "excerpt", "field_type"
+        ]
