@@ -10,7 +10,7 @@
         <h1 class="court-title">{{ court.title }}</h1>
         <!-- court author, court created, rating-->
         <p class="court-subtitle">{{ court.author }} | {{ court.created_on }} | {{ court.rating }} <i class="fa-solid fa-star gold-star"></i></p>
-        <p class="court-subtitle"><strong>Court Type: </strong>{{ court.get_field_type_display }}</p>
+        <p class="court-subtitle"><strong>Court Type: </strong>{{ court.get_court_type_display }}</p>
       </div>
       <div class="d-none d-md-block col-md-6 masthead-image">
         {% if "placeholder" in court.image.url %}

@@ -8,7 +8,17 @@ class ReviewForm(forms.ModelForm):
         fields = ('body',)
 
 
+
 class CourtForm(forms.ModelForm):
     class Meta:
         model = Court
-        fields = ["title", "content", "profile_image", "rating", "excerpt", "field_type"]
+        fields = [
+            'title', 'slug', 'content', 'rating', 
+            'profile_image', 'excerpt', 'court_type'
+        ]
+
+    court_type = forms.ChoiceField(
+        choices=Court.COURT_CHOICES,
+        widget=forms.RadioSelect,
+        label="Court Type",
+    )

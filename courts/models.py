@@ -13,7 +13,7 @@ STATUS = ((0, "Draft"), (1, "Published"))
 class Court(models.Model):
     INDOOR = 'Indoor'
     OUTDOOR = 'Outdoor'
-    FIELD_CHOICES = [
+    COURT_CHOICES = [
         (INDOOR, 'Indoor'),
         (OUTDOOR, 'Outdoor'),
     ]
@@ -41,9 +41,9 @@ class Court(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
 
     # Indoor or Outdoor
-    field_type = models.CharField(
+    court_type = models.CharField(
         max_length=7,
-        choices=FIELD_CHOICES,
+        choices=COURT_CHOICES,
         default=OUTDOOR,
     )
 
@@ -78,5 +78,5 @@ class CourtForm(forms.ModelForm):
         model = Court
         fields = [
             "title", "content", "profile_image", 
-            "rating", "excerpt", "field_type"
+            "rating", "excerpt", "court_type"
         ]
