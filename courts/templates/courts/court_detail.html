@@ -9,13 +9,24 @@
         <!-- Court title goes in these h1 tags -->
         <h1 class="court-title">{{ court.title }}</h1>
         <!-- court author, court created, rating-->
-        <p class="court-subtitle">{{ court.author }} | {{ court.created_on }} | {{ court.rating }} <i class="fa-solid fa-star gold-star"></i></p>
+        <p class="court-subtitle">{{ court.author }} | {{ court.created_on }} | {{ court.rating }} <i
+            class="fa-solid fa-star gold-star"></i></p>
         <p class="court-subtitle"><strong>Court Type: </strong>{{ court.get_court_type_display }}</p>
+        <!-- Update and delete form -->
+        {% if court.author == request.user %}
+        <!-- Display the edit and delete buttons only if the logged-in user is the author -->
+        <button class="btn btn-delete" href="{% url 'court_edit' slug=court.slug court_id=court.id %}">Edit Court</button>
+        <button class="btn btn-edit" href="{% url 'court_delete' slug=court.slug court_id=court.id %}">Delete Court</button>
+        {% endif %}
+
+        {% if user.is_authenticated and review.author == user %}
+          <button class="btn btn-delete" data-review_id="{{ review.id }}">Delete</button>
+          <button class="btn btn-edit" data-review_id="{{ review.id }}">Edit</button>
+          {% endif %}
       </div>
       <div class="d-none d-md-block col-md-6 masthead-image">
         {% if "placeholder" in court.image.url %}
-        <img class="card-img-top" src="{% static 'images/default.jpg' %}"
-            alt="placeholder image">
+        <img class="card-img-top" src="{% static 'images/default.jpg' %}" alt="placeholder image">
         {% else %}
         <img class="card-img-top" src="{{ court.profile_image.url }}">
         {% endif %}
@@ -36,11 +47,11 @@
       </div>
     </div>
   </div>
-  
+
   <!-- Displaying reviews -->
   <div class="row">
     <div class="col-md-8 card mb-4 mt-3">
-     <h3><i class="fa-solid fa-comments"> </i>  Reviews : {{ review_count }}</h3> 
+      <h3><i class="fa-solid fa-comments"> </i> Reviews : {{ review_count }}</h3>
       <div class="card-body">
         <!-- We want a for loop inside the empty control tags
           to iterate through each review in reviews -->
@@ -91,23 +102,19 @@
 </div>
 
 <!-- Delete confirmation modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1"
-  aria-labelledby="deleteModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title"
-          id="deleteModalLabel">Delete review?</h5>
-        <button type="button" class="btn-close"
-          data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title" id="deleteModalLabel">Delete review?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         Are you sure you want to delete your review?
         This action cannot be undone.
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary"
-          data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <a id="deleteConfirm" href="#" class="btn
           btn-danger">Delete</a>
       </div>
