@@ -181,6 +181,11 @@ h6 {
     /* Ensures the text and icon are aligned properly */
 }
 
+.form-label {
+    hidden: true;
+    /* Hides the label */
+}
+
 
 
 /* Media Queries */
