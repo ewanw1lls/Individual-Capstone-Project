@@ -2,7 +2,20 @@
 
 {% block content %}
 <div class="container mt-4">
-  <h2>Add a New Basketball Court</h2>
+  <!-- New Block for Instructions -->
+  <div class="mb-4">
+    <h3>Before You Start...</h3>
+    <p>
+      <!-- You can add your instructions here. -->
+      Please make sure you have all the necessary details about the court
+      you are submitting. You will need the <strong>location</strong>, facilities, rating (1-10) and
+      any other relevant information. Once you're ready, fill out the form below.
+      Note that your court will need to be reviewed before it is published.
+      Thank you for your contribution!
+    </p>
+  </div>
+<div class="container mt-4">
+  <h2>Add a New Basketball Court:</h2>
   <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
@@ -21,7 +34,7 @@
           data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Your court has been submitted and is awaiting approval.
+        Congratulations! Your court has been submitted and is awaiting approval.
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary"
