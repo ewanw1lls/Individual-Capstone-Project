@@ -639,7 +639,7 @@ The Code Institute PostGres database was cnnected in Heroku.
 
 Some features which were planned but left for future versions were:
 
-- **example** example text
+- **dark mode** dark mode that changes theme from light to dark for accessibility 
 - **example 2** example text
 
 # Credits and Thanks

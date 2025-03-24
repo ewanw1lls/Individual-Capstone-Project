@@ -128,6 +128,8 @@
     </script>
 
     <!-- Google Map script-->
+    <script async src="/static/js/key.js"></script>
+
     <script>
         function initMap() {
             // Ensure Google Maps API is loaded before using it
@@ -144,10 +146,6 @@
                 zoom: 10,
             });
         }
-    </script>
-
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-AdsplgsFvIJEvEnhY_LIjFXvyaw2LU0&callback=initMap">
     </script>
 
     {% block extras %}
