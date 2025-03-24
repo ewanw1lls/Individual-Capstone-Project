@@ -14,43 +14,45 @@
       Thank you for your contribution!
     </p>
   </div>
-<div class="container mt-4">
-  <h2>Add a New Basketball Court:</h2>
-  <form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Submit</button>
-  </form>
-</div>
-  
-<!-- Submission Confirmation Modal -->
-<div class="modal fade" id="successModal" tabindex="-1"
-  aria-labelledby="successModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="successModalLabel">Court Submitted</h5>
-        <button type="button" class="btn-close"
-          data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Congratulations! Your court has been submitted and is awaiting approval.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary"
-          data-bs-dismiss="modal">OK</button>
+  <div class="container mt-4">
+    <h2>Add a New Basketball Court:</h2>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <!-- Submission Confirmation Modal -->
+  <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="successModalLabel">Court Submitted</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Congratulations! Your court has been submitted and is awaiting approval.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- JavaScript to Trigger Modal on Success -->
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-      {% if messages %}
-          var successModal = new bootstrap.Modal(document.getElementById('successModal'));
-          successModal.show();
-      {% endif %}
-  });
-</script>
-{% endblock %}
+  <!-- JavaScript to Trigger Modal on Success -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      {
+        %
+        if messages %
+      }
+      var successModal = new bootstrap.Modal(document.getElementById('successModal'));
+      successModal.show(); {
+        % endif %
+      }
+    });
+  </script>
+  {% endblock %}

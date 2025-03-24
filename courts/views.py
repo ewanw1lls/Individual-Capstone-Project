@@ -142,6 +142,7 @@ def add_court(request):
 
     return render(request, "courts/add_court.html", {"form": form})
 
+
 def court_edit(request, slug, court_id):
     """
     view to edit court submission
@@ -156,11 +157,11 @@ def court_edit(request, slug, court_id):
             messages.add_message(request, messages.SUCCESS, 'Court submission updated!')
         else:
             messages.add_message(request, messages.ERROR, 'Error updating court submission!')
-            
     else:
         court_form = CourtForm(instance=court)
 
     return render(request, 'court_edit.html', {'form': court_form, 'court': court})
+
 
 def court_delete(request, slug, court_id):
     """

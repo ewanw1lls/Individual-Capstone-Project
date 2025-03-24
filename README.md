@@ -33,9 +33,7 @@ Find. Play. Ball. – Cornwall’s Courts at Your Fingertips!
 
 ## User Experience (UX)
 
-
 Cornwall Court Finder is designed as a simple yet powerful tool for basketball players who value convenience, accuracy, and ease of use. The website’s UX design prioritises simplicity and clarity, providing users with an intuitive interface to find, review, and update court information effortlessly. With a clean and mobile-friendly aesthetic, CFF ensures players can focus on what matters most—getting on the court and playing.
-
 
 ### Site User
 
@@ -67,7 +65,7 @@ The application utilises Django's built-in `User` model from `django.contrib.aut
 - `date_joined` (DateTimeField)
 
 #### Court Model (Custom)
-The `Todo` model represents individual basketball courts in the system.
+The `Court` model represents individual basketball courts in the system.
 
 **Fields:**
 ```python
@@ -288,12 +286,6 @@ The Kanban board acted as the cornerstone of project management, providing a rea
 
 **Backlog:** This column was where tasks and user stories that were identified but not yet prioritised for development were listed.
 
-## Wireframes
-
-![Desktop Wireframe](assets\images\wireframedesktop.png)
-![Tablet Wireframe](assets\images\wireframetablet.png)
-![Mobile Wireframe](assets\images\wireframemobile.png)
-
 ### User Stories
 
 User stories were integral to the development of Cornwall Court Finder, ensuring that each feature was designed to meet the needs of the end-users. These stories were mapped onto the Kanban board, guiding the development process from concept to completion.
@@ -369,43 +361,21 @@ Key features of the desktop wireframe include:
 
 **Design Principles**
 
-Both wireframes are guided by the following design principles:
-
-- Simplicity: A clean and minimalistic design that avoids clutter and focuses on the most important features and content.
-- Consistency: A consistent layout and design language across both mobile and desktop versions, to provide a seamless user experience.
-- Accessibility: A design that is accessible and usable for a wide range of users, with clear typography, high contrast colours, and intuitive navigation.
-
-These wireframes provide a solid foundation for the application's user interface and user experience, and will serve as a guide for further design and development iterations.
-
-
 ### Colour Scheme
 
-The colour scheme for the application is a combination of three distinct colours that work together to create a unique and engaging visual identity.
+While the colour scheme was planned during the project's early stages, it hasn't been fully implemented yet, as functionality has been the priority. The colour scheme was chosen with the help of [ColorSpace](https://mycolor.space/?hex=%23FF9671&sub=1), a colour palette generation website.
 
+![Colour Pallete from ColorSpace](assets\images\colourpallete.png)
 
-### Primary colour:
+### Primary colours:
 
-- **#Gun Metal (#0f242b):** A dark, rich grey tone with a hint of blue undertones, evoking a sense of sophistication and modernity. This colour is used as the primary brand colour and is prominent in the logo, text, and footer background.
+- **lightsalmon (#ff9671):** Lightsalmon was chosen for the website’s color scheme because of its close resemblance to the classic orange-brown of a real basketball. This subtle connection helps create an immediate association with the sport, making the website feel more familiar and relevant to players. The warm and energetic tone of lightsalmon also adds a welcoming and modern touch, helping to engage users while maintaining a visually appealing design.
 
-
-### Secondary colours:
-
-- **Goldenrod (#dfad38):** A warm, vibrant yellow-orange tone that adds a touch of energy and optimism to the design. This colour is used in the logo and main background image to add visual interest to the design.
-- **#Baby Powder (#fdfdfb):** A soft, calming white tone with a hint of warmth, providing a clean and gentle contrast to the other colours. This colour is used as a card background colour to provide a clean but subtle and understated approach.
-
-![Colours](https://github.com/Tedbot2000/todo-genie/blob/main/docs/images/coolors.png)
-
+- **firebrick (#c34a36):**Firebrick was selected to complement lightsalmon, offering a deeper, more grounded contrast that enhances readability and visual hierarchy. Its rich, reddish hue mirrors the darker accents found on basketball courts, such as boundary lines or key markings, reinforcing the basketball theme. Firebrick adds a bold and confident feel to the site, ensuring key elements stand out while maintaining a cohesive and dynamic look.
 
 ### Colour Rationale:
 
-The chosen colour scheme is designed to:
-
-- Create contrast: The dark gun metal tone provides a striking contrast to the bright goldenrod tone, while the baby powder tone provides a subtle background that allows other design elements to stand out.
-- Evoke emotions: The goldenrod tone adds a sense of excitement and energy, while the gun metal tone conveys a sense of sophistication and modernity.
-- Be unique: The combination of these three colours creates a distinctive visual identity that sets the application apart from others.
-- Be accessible: The colour scheme is designed to be accessible to users with colour vision deficiency, with sufficient contrast and clear colour differentiation.
-
-Overall, the chosen colour scheme provides a visually appealing and consistent design language that enhances the user experience and reinforces the brand's identity.
+Although the colour scheme has yet to be fully implemented—currently only visible in button styles—having a well-defined palette to refer back to will streamline the development and styling process. By using a gradient of complementary colours, the site will achieve a smooth, cohesive, and visually calming aesthetic. This approach ensures a balanced and engaging user experience while reinforcing the site's overall theme.
 
 
 ## Templates
@@ -421,13 +391,17 @@ The base template provides a foundation for the application's layout and design,
 - **Bootstrap Framework:** This is a widely-used CSS framework for building responsive and mobile-first interfaces.
 - **Custom CSS:** The custom CSS stylesheet ('static/css/style.css') is used to visualy expand and enhance beyond bootstrap.
 - **Character Encoding:** The character encoding standard used in the template is set to UTF-8 to support a wide range of characters and languages.
-- **Fonts:** The font families used in the template are the Google fonts Roboto and Konkhmer Sleokchher, providing a clean and modern typography.
-
+- **Fonts:** The font families used in the template are the GoogleFonts Tinos and Montserrat, providing a clean and modern typography.
+- **Favicon:** The favicon link are also present in the head, however these files arent currently operational and are listed in the future implementation fo the project.
 
 #### Navigation Bar:
 
 The navigation bar is a critical component of the base template, providing links to essential pages and features of the application. It includes:
-
+***Left aligned:***
+- **Court Finder Cornwall Link:** This is decoration and when clicked links to the home index.html page.
+- **Home Link:** This Links back to the index.html page 
+- **Add Court Link:** When clicked opens a the add_court.html template, presenting the user with a form for adding a new court.
+***Right Aligned:***
 - **Login and Register Links:** When a user is not logged in links to the login and register pages are available, allowing users to access their accounts or create new ones.
 - **Logout Link:** A link to logout of the application is available only when the user is logged in.
 - **Username Display:** The navigation bar displays the username of the logged-in user, providing a personalised experience.
@@ -437,139 +411,41 @@ The navigation bar is a critical component of the base template, providing links
 
 The main content area displays:
 
-- **Alert Messages:** Alert messages are displayed to provide feedback to the user. These messages are shown near the top of the card, ensuring they are visible without the need for scrolling too far. They are automatically dismissed after five seconds.
-- **Primary UI Content:** Primary content from other HTML files is served below this.
+- **Alert Messages:** Alert messages are displayed to provide feedback to the user. These messages are shown near the top of the card, ensuring they are visible without the need for scrolling too far.
+
+- **Logged in as** In the top right hand side is a display message that displayed whether the user is logged in and who they are logged in as.
 
 
-#### Script References:
+### Main Page Template (index.html)
 
-The base template includes references to the following scripts:
-
-- **Bootstrap JavaScript Files:** The template includes references to Bootstrap's JavaScript files, which provide functionality for components such as buttons, modals, and tooltips.
-- **Custom JavaScript Code:** The template also includes custom JavaScript code, which provides functionality for task management features, such as toggling task statuses and updating the task list.
-
-
-### Main Page Template (todo_list.html)
-
-The todo_list.html template serves as the main page of the application, displaying the user's task list and providing features for task management.
+The index.html template serves as the main page of the application, displaying a map and a paignated list of all the courts.
 
 
 #### Meta Content:
 
 - Extends the `base.html` template to ensure a consistent layout and styling across the entire application.
 - Utilises `{% load static %}` to load static files.
+- `{% block content %}` to allow child tempaltes to override section.
 
 
 #### Content:
 
-The todo_list.html template displays the following content:
+The index.html template displays the following content:
 
-- **Task Form:** The template includes a form for adding new tasks, allowing users to create new tasks and add them to their task list.
-- **Task List:** The template displays the user's task list, including task names, statuses, and actions (edit and delete).
-- **Task Status Toggle:** The template provides a button for toggling task statuses, allowing users to easily update the status of their tasks.
-    - If a task is not started the button will appear grey
-    - If a task is in progress the button will appear orange
-    - When a task is completed the button will appear green
-- **Task Actions:** The template includes an actions for editing tasks, allowing users to update them, and for deleting tasks, allowing users to remove them.
+- **:** 
+- **:** 
+- **:**  
+- **:** 
+- **:** 
 
-![Task List Widescreen](https://github.com/Tedbot2000/todo-genie/blob/main/docs/images/TaskListWide.png)
-![Task List Widescreen](https://github.com/Tedbot2000/todo-genie/blob/main/docs/images/TaskListNarrow.png)
+![Task List Widescreen]()
+![Task List Widescreen]()
 
-### Edit Task Page Template (edit_task.html)
+### Add Court Page Template (add_court.html):
 
-The edit_task.html template is accessed via the 'Edit' button alongside a task on the todo_list.html page. It displays a textbox populated with the task the user wishes to edit and a submit button for when they have finished editing.
+The template features a structured form that allows users to add new basketball courts to the site. This form is built using fields from the previously defined Court Model, ensuring that all submitted data aligns with the database structure.
 
-
-#### Meta Content:
-
-- Extends the `base.html` template to ensure a consistent layout and styling across the entire application.
-- Utilises `{% load static %}` to load static files.
-
-
-#### Content:
-
-The edit_tas.html template displays the following content:
-
-- **Task Form:** The template includes a form for editing the selected task, allowing users to update exisitng tasks in their task list.
-
-
-## ToDo Model
-
-The toDo model is used to represent the tasks within the ToDo Genie Pro Django application. Below is an outline of the model's primary attributes and features:
-
-
-### Fields:
-
-The ToDo model includes the following fields to store and manage tasks, while associating them with a user:
-
-- **id:** A unique identifier for each task, automatically generated by Django as a primary key.
-- **todo_name:** A character field to store the title or name of the task, with a maximum length of 60 characters.
-- **status:** A choice field to store the status of the task, with options including "not started", "in progress", and "completed".
-- **user:** A foreign key field to store the user who created the task, linking the task to the User model.
-
-
-## ToDo Views
-
-The ToDo Views are responsible for handling the logic for each task-related action in the application. These views are defined in the **views.py** file and are called when a user interacts with the application.
-
-Here are the Task Views defined in the **views.py** file:
-
-**1. todo_list**
-
-- This view retrieves a list of all to-do list tasks from the database and renders the todo_list.html template, passing the task list as a context variable.
-- The todo_list view is called when the, logged in,  user visits the root URL of the application ('').
-
-**2. toggle_status**
-
-- This view takes an id parameter, which identifies the task to be updated.
-- The view toggles the completed status of the task and saves the changes to the database.
-- The toggle_status view is called when the user clicks the "Toggle Status" button for a task.
-
-**3. delete_task**
-
-- This view takes an id parameter, which identifies the task to be deleted.
-- The view deletes the task from the database.
-- The delete_task view is called when the user clicks the "Delete" button for a task.
-
-**4. update_task**
-
-- This view takes an id parameter, which identifies the task to be updated.
-- The view retrieves the task from the database, updates its details, and saves the changes to the database.
-- The update_task view is called when the user submits the 'Edit' form for a task.
-
-
-**URL Routing**
-
-The URL Routing system in Django maps URLs to views, which handle the logic for each page or action in the application. In the ToDo Genie application, the URL patterns are defined in the **urls.py** file.
-
-The **urls.py** file defines four URL patterns:
-
-**Todo List Page:**
-- URL: '/'
-- View: 'todo_list'
-- Name: 'todo_list'
-- Function: Displays the list of tasks
-
-**Toggle Task Status:**
-- URL: '/toggle_status/<int:id>/'
-- View: 'toggle_status'
-- Name: 'toggle_status'
-- Function: Toggles the status of a task
-
-**Delete Task:**
-- URL: '/delete/<int:id>/'
-- View: 'delete_task'
-- Name: 'delete'
-- Function: Deletes a task
-
-**Update Task:**
-- URL: '/update/<int:id>/'
-- View: 'update_task'
-- Name: 'update'
-- Function: Updates a task
-
-By using URL Routing, the ToDo Genie application can decouple the URL structure from the view logic, making it easier to maintain and extend the application.
-
+To maintain accuracy and consistency, the form is designed to capture essential court details, such as location, surface type, and hoop condition. Additionally, an approval process is implemented, requiring submissions to be reviewed before appearing on the site. This helps prevent inaccurate or duplicate entries, ensuring that the court listings remain reliable and valuable for users.
 
 # Testing and Validation
 
@@ -598,7 +474,7 @@ court_detail.html Validation
 
 The style.css file was validated using the W3C CSS Validation Service
 
-![CSS Validtation]()
+![CSS Validtation](assets\images\CSSvalidation.png)
 
 ## Javascript Validation
 
