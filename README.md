@@ -223,52 +223,7 @@ The model structure of the basketball court finder website follows a minimal des
 - User passwords hashed by Django's auth system
 - Foreign key relationships protect data integrity
 - env.py file used for PostgreSQL URL amongst other sensitive keys
-
-## Database Management
-
-### Migrations
-The database structure is managed through Django migrations:
-1. Initial migration creates the Todo model
-2. Status field migration adds the status choices
-3. User relationship migration adds the foreign key
-
-
-## Database Access Patterns
-
-### Common Queries
-1. Retrieving user's tasks:
-```python
-Todo.objects.filter(user=request.user).order_by('id')
-```
-
-2. Updating task status:
-```python
-todo = Todo.objects.get(id=id, user=request.user)
-todo.status = new_status
-todo.save()
-```
-
-3. Task deletion:
-```python
-todo = Todo.objects.get(id=id, user=request.user)
-todo.delete()
-```
-
-## Performance Considerations
-
-1. **Indexing**
-   - Primary keys automatically indexed
-   - Foreign key (user_id) indexed for faster joins
-
-2. **Query Optimization**
-   - Filtered queries use user_id for efficiency
-   - Task retrievals limited to authenticated user
-
-3. **Data Constraints**
-   - Maximum task name length (60 chars)
-   - Predefined status choices
-   - Required user association
-
+- google maps api key currently in js file as env wasnt complying 
 
 ### Agile Development: Creating a Kanban Board on GitHub
 
@@ -286,7 +241,7 @@ The Kanban board acted as the cornerstone of project management, providing a rea
 
 **Backlog:** This column was where tasks and user stories that were identified but not yet prioritised for development were listed.
 
-### User Stories
+### User Stories:
 
 User stories were integral to the development of Cornwall Court Finder, ensuring that each feature was designed to meet the needs of the end-users. These stories were mapped onto the Kanban board, guiding the development process from concept to completion.
 
@@ -310,30 +265,29 @@ Example user stories:
         A "Log Out" button should be available and functional.
         Only logged-in users should be able to add, edit, or delete reviews.
 
-## User Interface (UI)
+## User Interface (UI):
 
 - The website features a clean, minimalistic design with a focus on usability and ease of navigation, ensuring users can quickly find nearby basketball courts.
 - The UI is controlled through straightforward buttons and interactive elements, ideal for mobile users while maintaining ease of use on larger screens for those browsing on desktops.
 - A responsive design ensures that the site is fully functional across different devices and screen sizes, delivering a smooth experience whether users are accessing it from a smartphone, tablet, or desktop.
 
-### Wireframes
+## Design Principles: 
+
+### Wireframes:
 
 To visualise the user interface and user experience of the application, three wireframes were created: one for mobile screens, one for tablets and one for desktops. These wireframes provide a low-fidelity representation of the application's layout, navigation, and key features.
 
-**Mobile Wireframe**
+**Mobile Wireframe:**
 
-The mobile wireframe is designed to accommodate the smaller screen size and touch-based interaction of mobile devices. The layout is optimised for portrait mode, with a focus on simplicity and ease of use.
-
-![Mobile Wireframe](assets\images\wireframemobile.png)
+The mobile wireframe is crafted to suit the smaller screen size and touch-based navigation of mobile devices. Optimised for portrait orientation, the layout prioritises simplicity and ease of use.
 
 Key features of the mobile wireframe include:
+-A streamlined navigation bar at the top, offering users quick access to login/logout functions
+-A card-based layout to present content clearly, with legible typography and minimal distractions
+-A focus on vertical scrolling, with prominent section headers and dividers to direct the user's attention
+-A straightforward and unobtrusive footer for easy navigation.
 
-- A clean and simple nav bar at the top of the screen, allowing users easy access to login/logout features
-- A card-based layout for displaying content, with clear typography and minimal clutter
-- A focus on vertical scrolling, with clear section headers and dividers to guide the user's attention
-- A simple and clear footer.
-
-**Tablet Wireframe**
+**Tablet Wireframe:**
 
 The tablet wireframe is designed to accommodate the smaller screen size and touch-based interaction of tablet devices. The layout is optimised for portrait mode, with a focus on simplicity and ease of use.
 
@@ -346,7 +300,7 @@ Key features of the tablet wireframe include:
 - A focus on vertical scrolling, with clear section headers and dividers to guide the user's attention
 - A simple and clear footer
 
-**Desktop Wireframe**
+**Desktop Wireframe:**
 
 The desktop wireframe takes advantage of the larger screen size and mouse-based interaction to provide a more detailed and feature-rich experience. The layout is optimized for a wider range of screen resolutions and aspect ratios.
 
@@ -359,9 +313,7 @@ Key features of the desktop wireframe include:
 - A focus on verticle scrolling, with clear section headers and dividers to guide the user's attention
 - A simple and clear footer
 
-**Design Principles**
-
-### Colour Scheme
+### Colour Scheme:
 
 While the colour scheme was planned during the project's early stages, it hasn't been fully implemented yet, as functionality has been the priority. The colour scheme was chosen with the help of [ColorSpace](https://mycolor.space/?hex=%23FF9671&sub=1), a colour palette generation website.
 
@@ -378,10 +330,10 @@ While the colour scheme was planned during the project's early stages, it hasn't
 Although the colour scheme has yet to be fully implemented—currently only visible in button styles—having a well-defined palette to refer back to will streamline the development and styling process. By using a gradient of complementary colours, the site will achieve a smooth, cohesive, and visually calming aesthetic. This approach ensures a balanced and engaging user experience while reinforcing the site's overall theme.
 
 
-## Templates
+## Templates:
 
 
-### Base Template (`base.html`)
+### Base Template (`base.html`):
 
 The base template provides a foundation for the application's layout and design, including the navigation bar, footer, and main content area. It uses Bootstrap for styling and layout, and includes custom CSS for additional design elements.
 
@@ -397,6 +349,7 @@ The base template provides a foundation for the application's layout and design,
 #### Navigation Bar:
 
 The navigation bar is a critical component of the base template, providing links to essential pages and features of the application. It includes:
+
 ***Left aligned:***
 - **Court Finder Cornwall Link:** This is decoration and when clicked links to the home index.html page.
 - **Home Link:** This Links back to the index.html page 
@@ -406,20 +359,16 @@ The navigation bar is a critical component of the base template, providing links
 - **Logout Link:** A link to logout of the application is available only when the user is logged in.
 - **Username Display:** The navigation bar displays the username of the logged-in user, providing a personalised experience.
 
-
 #### Main Content:
 
 The main content area displays:
 
 - **Alert Messages:** Alert messages are displayed to provide feedback to the user. These messages are shown near the top of the card, ensuring they are visible without the need for scrolling too far.
-
 - **Logged in as** In the top right hand side is a display message that displayed whether the user is logged in and who they are logged in as.
 
-
-### Main Page Template (index.html)
+### Main Page Template (index.html):
 
 The index.html template serves as the main page of the application, displaying a map and a paignated list of all the courts.
-
 
 #### Meta Content:
 
@@ -427,9 +376,7 @@ The index.html template serves as the main page of the application, displaying a
 - Utilises `{% load static %}` to load static files.
 - `{% block content %}` to allow child tempaltes to override section.
 
-
 #### Content:
-
 The index.html template displays the following content:
 
 - **:** 
@@ -447,36 +394,28 @@ The template features a structured form that allows users to add new basketball 
 
 To maintain accuracy and consistency, the form is designed to capture essential court details, such as location, surface type, and hoop condition. Additionally, an approval process is implemented, requiring submissions to be reviewed before appearing on the site. This helps prevent inaccurate or duplicate entries, ensuring that the court listings remain reliable and valuable for users.
 
-# Testing and Validation
+# Testing and Validation:
 
-## HTML Validation
+## HTML Validation:
 
-All HTML pages were validated using the W3C Markup Validation Service
-
-base.html Validation
-
-![base.html Validation]()
+All HTML pages were validated using the W3C Markup Validation Service, as the base.html is included in the other templates testing for it is done on each other validation.
 
 index.html Validation
-
-![index.html Validation]()
+![index.html Validation](assets\images\valid.png)
 
 add_court.html Validation
-
 ![add_court.html Validation]()
 
 court_detail.html Validation
+![court_detail.html Validation](assets\images\valid.png)
 
-![court_detail.html Validation]()
-
-
-## CSS Validation
+## CSS Validation:
 
 The style.css file was validated using the W3C CSS Validation Service
 
 ![CSS Validtation](assets\images\CSSvalidation.png)
 
-## Javascript Validation
+## Javascript Validation:
 
 The js files were validated using the validator at JSLint.com
 
@@ -486,7 +425,7 @@ The js files were validated using the validator at JSLint.com
 
 ![script.js]()
 
-## Python Validation
+## Python Validation:
 
 All python files were validated using the Code Institute Python Linter
 
@@ -502,13 +441,13 @@ All python files were validated using the Code Institute Python Linter
 ![Python vaidation proj_wsgi.py]()
 
 
-## Tests
+## Tests:
 
-### Responsiveness Test
+### Responsiveness Test:
 
 Responsiveness tests were carried out using Google Chrome with the Accessibility Properties. Different resolutions were tested to ensure no problems with the siteat each one.
 
-### Account Signup, Login, Logout, and Access Tests
+### Account Signup, Login, Logout, and Access Tests:
 
 | Test              | Result |
 | :---------------- | :------: |
@@ -520,7 +459,7 @@ Responsiveness tests were carried out using Google Chrome with the Accessibility
 | Users cannot edit or review each others' reviews or courts | Pass |
 
 
-### Adding Court Tests
+### Adding Court Tests:
 
 | Test              | Result |
 | :---------------- | :------: |
@@ -533,7 +472,7 @@ Responsiveness tests were carried out using Google Chrome with the Accessibility
 
 Currently users cannot edit or delete courts, this functionality is WIP
 
-### Adding Court Review Tests
+### Adding Court Review Tests:
 
 | Test              | Result |
 | :---------------- | :------: |
@@ -544,18 +483,18 @@ Currently users cannot edit or delete courts, this functionality is WIP
 | User can delete a review | Pass |
 | Admin can approve review through the admin panel | Pass |
 
-# Deployment
+# Deployment:
 
-The repo was created in Github. Code was created and update updated in VS Code.
+The repo was created in Github. Repo was then cloned to VS Code where it was created and updated back to github.
 
 The app was deployed on [Heroku here](https://court-finder-courts-0bc1e2d6a141.herokuapp.com/)
 
 Secret Keys were connected to config vars in Heroku.
 
-The Code Institute PostGres database was cnnected in Heroku.
+The Code Institute PostGres database was connected in Heroku.
 
 
-# Future Features
+# Future Features:
 
 Some features which were planned but left for future versions were:
 

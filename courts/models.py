@@ -47,7 +47,7 @@ class Court(models.Model):
         default=OUTDOOR,
     )
 
-    # going to new fields for location,
+    # going to need fields for location,
     # (longitude/latitude/address),
 
     class Meta:

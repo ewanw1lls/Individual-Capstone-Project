@@ -2,11 +2,10 @@
 
 {% block content %}
 <div class="container mt-4">
-  <!-- New Block for Instructions -->
   <div class="mb-4">
     <h3>Before You Start...</h3>
     <p>
-      <!-- You can add your instructions here. -->
+      <!-- Instructions here. -->
       Please make sure you have all the necessary details about the court
       you are submitting. You will need the <strong>location</strong>, facilities, rating (1-10) and
       any other relevant information. Once you're ready, fill out the form below.
@@ -45,14 +44,10 @@
   <!-- JavaScript to Trigger Modal on Success -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      {
-        %
-        if messages %
-      }
+      {% if messages %}
       var successModal = new bootstrap.Modal(document.getElementById('successModal'));
-      successModal.show(); {
-        % endif %
-      }
+      successModal.show();
+      {% endif %}
     });
   </script>
   {% endblock %}

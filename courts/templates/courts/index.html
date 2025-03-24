@@ -36,9 +36,8 @@
             <!-- Postcode Search -->
             <form method="POST">
                 {% csrf_token %}
-                <label for="postcode" class="form-label">
-                    <h4>Enter your Postcode Below:</h4>
-                </label>
+                <h4>Enter your Postcode Below:</h4>
+                <label for="postcode" class="form-label"></label>
                 <input type="text" id="postcode" name="address" class="form-control mb-2" placeholder="e.g. TR7 0G9"
                     required>
                 <button type="submit" class="btn btn-primary w-100">Find Courts</button>

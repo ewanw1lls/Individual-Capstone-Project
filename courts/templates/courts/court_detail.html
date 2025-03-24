@@ -24,7 +24,7 @@
         {% if "placeholder" in court.image.url %}
         <img class="card-img-top" src="{% static 'images/default.jpg' %}" alt="placeholder image">
         {% else %}
-        <img class="card-img-top" src="{{ court.profile_image.url }}">
+        <img class="card-img-top" src="{{ court.profile_image.url }}" alt="profile image">
         {% endif %}
       </div>
     </div>
@@ -57,6 +57,7 @@
         <!-- The court content goes inside the card-text. -->
         <!-- Use the | safe filter inside the template tags -->
         <article class="card-text">
+          <h3>{{ court.title | safe }}</h3>
           {{ court.content | safe }}
         </article>
       </div>
