@@ -226,15 +226,6 @@ The model structure of the basketball court finder website follows a minimal des
 - Foreign key relationships protect data integrity
 - env.py file used for PostgreSQL URL amongst other sensitive keys
 
-## Future Database Enhancements
-
-The current database structure allows for several potential enhancements:
-
-1. **Location**
-   ```python
-   
-   ```
-
 ## Database Management
 
 ### Migrations
