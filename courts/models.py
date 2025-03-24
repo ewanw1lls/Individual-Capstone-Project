@@ -7,7 +7,7 @@ from django import forms
 STATUS = ((0, "Draft"), (1, "Published"))
 
 
-# Create your models here.
+# Models here.
 
 
 class Court(models.Model):
@@ -47,7 +47,7 @@ class Court(models.Model):
         default=OUTDOOR,
     )
 
-    # going to new fields for indoor/outdoor, location
+    # going to new fields for location,
     # (longitude/latitude/address),
 
     class Meta:

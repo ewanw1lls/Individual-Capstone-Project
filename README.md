@@ -1,57 +1,55 @@
-# Individual-Capstone-Project
-Individual capstone project
+# TO DO
 
+- **dark mode** dark mode that changes theme from light to dark for accessibility 
+- **fix favicon** favicon currently doesnt load and i cant seem to fix it in any way thats simple
+- **edit/delete courts** 
+- **location field in court model** address field that converts to corrdinates to be used with google maps to display court locations on map
+- **markers on map** markers are clickable and take you to the court page
+- **enter postcode field** be able to enter postcode and have the page change to show the courts nearest to you
+- **indoor/outdoor buttons** add functionality to outdoor/indoor buttons so they filter out indoor or outdoor courts when pressed
+- **am i responsive image** 
 
-## Wireframes
+# Court Finder Cornwall: Cornwall's Basketball Court Finder
 
-![Desktop Wireframe](assets\images\wireframedesktop.png)
-![Tablet Wireframe](assets\images\wireframetablet.png)
-![Mobile Wireframe](assets\images\wireframemobile.png)
-
-
-# ToDo Genie: The user-friendly to-do list application
-
-Do more with the Django application that is your daily manager for things you need to get done. 
+Find. Play. Ball. – Cornwall’s Courts at Your Fingertips!
 
 
 ## Key Features:
 
-1. **User Authentication and Authorisation:** ToDo Genie uses AllAuth for user authentication and authorisation, providing a secure way for users to create accounts and log in to access their personalised to-do lists.
+1. **User Authentication and Authorisation:** Cornwall Court Finder (CCF) uses AllAuth for user authentication and authorisation, providing a secure way for users to create accounts and log in to add courts and reviews.
 
-2. **CRUD Operations:** The application supports Create, Read, Update, and Delete (CRUD) operations, enabling users to add, view, edit, and delete tasks as needed.
+2. **CRUD Operations:** The application supports Create, Read, Update, and Delete (CRUD) operations, enabling users to add, view, edit, and delete courts or reviews as they wish.
 
-3. **Intuitive User Interface:** ToDo Genie features a user-friendly interface that makes it easy to navigate and manage tasks, with a clean design and minimal clutter.
+3. **Intuitive User Interface:** CCF features a intuitive user interface that ensures players can quickly and easily find nearby courts, check reviews, and plan their games without frustration, making the experience seamless and enjoyable.
 
-4. **Task Status Toggle:** Users can easily toggle the status of their tasks between Not Started, In Progress, and Completed, helping them track their progress and stay organised.
+4. **Editing** Users can easily edit the status of their court/reviews, helping them keep information up to date and ensure other players have the latest details on court conditions and game availability..
 
-5. **Task Deletion:** Users can delete tasks that are no longer relevant or completed, keeping their task list up-to-date and clutter-free.
+5. **Deletion:** Users can delete their courts/reviews, giving them control over their contributions and ensuring the information remains relevant and accurate. .
 
 6. **Responsive Design:** The application is designed to be responsive, ensuring a seamless user experience across various devices and screen sizes.
 
-![Responsive Design](https://github.com/Tedbot2000/todo-genie/blob/main/docs/images/Responsive.png)
+![Responsive Design]()
 
 
 ## User Experience (UX)
 
 
-ToDo Genie is designed as a simple yet powerful task management tool that caters to individuals who value efficiency, organisation, and ease of use. The app's UX design emphasises simplicity and clarity, providing users with an intuitive interface that helps them manage their daily tasks effectively. With a clean and minimalistic aesthetic, ToDo Genie ensures that users can focus on what matters most—getting things done.
+Cornwall Court Finder is designed as a simple yet powerful tool for basketball players who value convenience, accuracy, and ease of use. The website’s UX design prioritises simplicity and clarity, providing users with an intuitive interface to find, review, and update court information effortlessly. With a clean and mobile-friendly aesthetic, CFF ensures players can focus on what matters most—getting on the court and playing.
 
 
 ### Site User
 
-The primary users of ToDo Genie are individuals from various backgrounds who seek a straightforward and reliable solution for task management. These users may include students, professionals, or anyone looking to keep track of their daily responsibilities. They appreciate the app's user-friendly design, which allows them to quickly add, organise, and complete tasks without unnecessary complexity. These users value productivity, clarity, and a tool that adapts to their needs, helping them stay on top of their to-do lists.
-
+The primary users of CFF are basketball players of all levels who need a quick and reliable way to find and review courts in Cornwall. These users may include casual players, dedicated ballers, and newcomers looking for a place to play. They appreciate the website’s user-friendly design, which allows them to easily search for courts, check reviews, and update court statuses without hassle. These players value convenience, accuracy, and a tool that adapts to their needs, helping them get on the court with minimal effort.
 
 ### Goal
 
-ToDo Genie aims to provide users with a streamlined and efficient way to manage their tasks, ensuring they stay on top of their commitments and goals. By offering essential features such as task creation, (and, in a future version, prioritisation, and tracking), the app helps users organise their day-to-day activities with ease. The goal is to create a minimalist, user-focused experience that simplifies task management, making it easier for users to achieve their personal and professional objectives without distraction.
-
+CFF aims to provide basketball players with a seamless and efficient way to discover and review courts, ensuring they can easily find the best places to play. By offering key features such as court search, user reviews, and real-time status updates (with potential future additions like game scheduling and player connections), the website helps players plan their games with ease. The goal is to create a user-focused, mobile-friendly experience that simplifies finding and sharing court information, making it easier for players to get on the court and enjoy the game without hassle.
 
 
 ## Database Structure & Purpose
 
 ### Overview
-ToDo Genie uses a PostgreSQL database to store user and task information. The application implements a straightforward database design focusing on the essential requirements of a task management system while maintaining data integrity and user data separation.
+CFF uses a PostgreSQL database to store user and task information. The application implements a straightforward database design focusing on the essential requirements of a task management system while maintaining data integrity and user data separation.
 
 ### Core Models
 
@@ -68,142 +66,173 @@ The application utilises Django's built-in `User` model from `django.contrib.aut
 - `is_active` (BooleanField)
 - `date_joined` (DateTimeField)
 
-#### Todo Model (Custom)
-The `Todo` model represents individual tasks in the system.
+#### Court Model (Custom)
+The `Todo` model represents individual basketball courts in the system.
 
 **Fields:**
 ```python
-class Todo(models.Model):
-    todo_name = models.CharField(
-        max_length=60,
-        blank=False,
-        help_text="The name of the task (max 60 characters)"
+class Court(models.Model):
+    INDOOR = 'Indoor'
+    OUTDOOR = 'Outdoor'
+    COURT_CHOICES = [
+        (INDOOR, 'Indoor'),
+        (OUTDOOR, 'Outdoor'),
+    ]
+
+    title = models.CharField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True)
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="courts"
     )
-    status = models.CharField(
-        max_length=20,
-        default="Not Started",
-        choices=[
-            ("Not Started", "Not Started"),
-            ("In Progress", "In Progress"),
-            ("Completed", "Completed"),
-        ],
-        help_text="The status of the task"
+    content = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    status = models.IntegerField(choices=STATUS, default=0)
+    rating = models.DecimalField(
+        max_digits=3, decimal_places=1,
+        null=True, blank=True,
+        validators=[
+            MinValueValidator(0.0),
+            MaxValueValidator(10.0)
+        ]
+    )  # Rating from 0.0 to 10.0
+    profile_image = CloudinaryField(
+        'image', default='placeholder'
+    )  # Court image
+    excerpt = models.TextField(blank=True)
+    updated_on = models.DateTimeField(auto_now=True)
+
+    # Indoor or Outdoor
+    court_type = models.CharField(
+        max_length=7,
+        choices=COURT_CHOICES,
+        default=OUTDOOR,
     )
-    user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        null=True
-    )
+
+    class Meta:
+        ordering = ["-created_on"]
+
+    def __str__(self):
+        return f"{self.title} | written by {self.author}"
 ```
 
 ### Field Details
 
-#### Todo Model Fields:
-1. **todo_name**
-   - Type: CharField
-   - Max Length: 60 characters
-   - Nullable: False
-   - Purpose: Stores the task description
-   - Validation: Cannot be empty, maximum 60 characters
+#### Court Model Fields:
+1. **title**
+- Type: CharField
+- Max Length: 200 characters
+- Unique: Yes
+- Purpose: Stores the name of the basketball court
+- Validation: Ensures no two courts have the same title
 
-2. **status**
-   - Type: CharField
-   - Max Length: 20 characters
-   - Default: "Not Started"
-   - Choices: ["Not Started", "In Progress", "Completed"]
-   - Purpose: Tracks the current state of the task
+2. **slug**
+- Type: SlugField
+- Max Length: 200 characters
+- Unique: Yes
+- Purpose: Creates a URL-friendly identifier for each court
 
-3. **user**
-   - Type: ForeignKey
-   - References: Django User model
-   - On Delete: CASCADE
-   - Nullable: True
-   - Purpose: Links tasks to specific users
-   - Behavior: When a user is deleted, all their tasks are also deleted
+3. **author**
+- Type: ForeignKey (references the User model)
+- On Delete: CASCADE (deleting a user removes all their courts)
+- Related Name: "courts" (allows reverse lookup from User to Court)
+- Purpose: Links a court entry to the user who submitted it
+
+4. **content**
+- Type: TextField
+- Purpose: Stores a detailed description of the court
+
+5. **created_on**
+- Type: DateTimeField
+- Auto Now Add: Yes (automatically sets when the court is created)
+- Purpose: Tracks when the court entry was first added
+
+6. **updated_on**
+- Type: DateTimeField
+- Auto Now: Yes (updates whenever the entry is modified)
+- Purpose: Keeps track of the last modification date
+
+7. **status**
+- Type: IntegerField
+- Choices: Defined by STATUS (likely used for draft/published states)
+- Default: 0
+- Purpose: Manages whether a court listing is visible or in draft mode
+
+8. **rating**
+- Type: DecimalField
+- Max Digits: 3 (e.g., 10.0)
+- Decimal Places: 1
+- Nullable: Yes
+- Blank: Yes
+    - Validators:
+    - Min Value: 0.0
+    - Max Value: 10.0
+- Purpose: Stores the average rating of the court
+
+9. **profile_image**
+- Type: CloudinaryField
+- Default: 'placeholder'
+- Purpose: Stores an image of the basketball court
+
+10. **excerpt**
+- Type: TextField
+- Blank: True
+- Purpose: Stores a short summary of the court entry
+
+11. **court_type**
+- Type: CharField
+- Max Length: 7 characters
+    - Choices:
+    - "Indoor"
+    - "Outdoor"
+- Default: "Outdoor"
+- Purpose: Specifies whether the court is indoor or outdoor
 
 ## Database Relationships
 
-The Entity Relationship Diagram is intentionally straightforward to maintain a clear focus on the Minimum Viable Product (MVP). This approach ensured a clear vision from the outset, with the flexibility to create a new ERD for any significant additions or changes in the future.
+The Entity Relationship Diagram is intentionally straightforward to maintain a clear focus on the Minimum Viable Product (MVP).
 
-![ToDo List ERD](https://github.com/Tedbot2000/todo-genie-01/blob/main/docs/images/ToDo_ListERDDiagram.png)
+**User (One) → Court (Many)**
+One user can submit multiple courts.
+Each court belongs to one user.
 
-During development, the decision was taken to modify the Status variable from a simple Boolean toggle to a String/CharField, tri-state toggle. This change was made in order to create more status options beyond just "Not Started" and "Complete."
+**User (One) → Review (Many)**
+One user can submit multiple reviews.
+Each review belongs to one user.
 
-```python
-status = models.CharField(
-        max_length=20,
-        default="Not Started",
-        choices=[
-            ("Not Started", "Not Started"),
-            ("In Progress", "In Progress"),
-            ("Completed", "Completed"),
-        ],
-        help_text="The status of the task "
-        "(choices: Not Started, In Progress, Completed)"
-    )
-```
+**Court (One) → Review (Many)**
+One court can have multiple reviews.
+Each review is linked to a single court.
 
 ### Key Points:
 1. One-to-Many Relationship:
-   - One user can have multiple tasks (todos)
-   - Each task belongs to exactly one user
+   - One user can have multiple reviews and court submissions.
+   - Each court and review belongs to one user
    - Relationship enforced through foreign key constraint
 
 2. Data Integrity:
    - CASCADE deletion ensures no orphaned tasks
    - Foreign key constraints maintain referential integrity
-   - Status choices are enforced at the database level
-
 
 ## Database Design Decisions
 
-### 1. Choice of PostgreSQL
-- Robust relational database
-- Excellent support for Django
-- Strong data integrity features
-- Scalable for future growth
+### 1. PostgreSQL
+PostgreSQL is a powerful, open-source relational database that offers robust features such as ACID compliance, advanced query capabilities, JSON support, and full-text search. It is highly extensible, allowing custom data types and functions, and is designed for scalability with features like concurrency control and horizontal scaling. PostgreSQL’s ACID compliance ensures that user data, court reviews, and other transactions are processed reliably and consistently.
 
 ### 2. Model Structure
-- Minimal design focusing on MVP requirements
-- User authentication handled by Django's built-in system
-- Simple task structure with essential fields only
+The model structure of the basketball court finder website follows a minimal design, focusing on the core MVP requirements to ensure a streamlined and efficient user experience. The database schema is designed with simplicity, prioritising essential features such as court locations, user reviews, and search functionality. For user authentication, the website leverages Django's built-in authentication system, providing a secure and scalable solution for managing user sign-ups, logins, and permissions. This approach minimises development overhead while ensuring that authentication is both reliable and easy to implement, allowing the team to focus on the core features of the website without sacrificing security or user management.
 
 ### 3. Security Considerations
 - User passwords hashed by Django's auth system
 - Foreign key relationships protect data integrity
-- Task access controlled through user relationships
+- env.py file used for PostgreSQL URL amongst other sensitive keys
 
 ## Future Database Enhancements
 
 The current database structure allows for several potential enhancements:
 
-1. **Task Categories**
+1. **Location**
    ```python
-   class Category(models.Model):
-       name = models.CharField(max_length=50)
-       user = models.ForeignKey(User, on_delete=models.CASCADE)
-   ```
-
-2. **Due Dates**
-   ```python
-   # Add to Todo model:
-   due_date = models.DateTimeField(null=True, blank=True)
-   ```
-
-3. **Task Priority**
-   ```python
-   # Add to Todo model:
-   priority = models.IntegerField(
-       choices=[(1, 'Low'), (2, 'Medium'), (3, 'High')],
-       default=2
-   )
-   ```
-
-4. **Task Tags**
-   ```python
-   class Tag(models.Model):
-       name = models.CharField(max_length=30)
-       todos = models.ManyToManyField(Todo)
+   
    ```
 
 ## Database Management
@@ -254,70 +283,80 @@ todo.delete()
 
 ### Agile Development: Creating a Kanban Board on GitHub
 
-For the development of ToDo Genie, I adopted an Agile approach to ensure continuous progress and adaptability throughout the project. Central to this methodology was the use of a Kanban board on GitHub Projects, which allowed for clear visualisation and efficient management of the development process. View the [project board here](https://github.com/users/Tedbot2000/projects/3).
+For the development of Cornwall Court FInder, I adopted an Agile approach to ensure continuous progress and adaptability throughout the project. Central to this methodology was the use of a Kanban board on GitHub Projects, which allowed for clear visualisation and efficient management of the development process. View the [project board here](https://github.com/users/ewanw1lls/projects/8).
 
 The Kanban board acted as the cornerstone of project management, providing a real-time snapshot of task progression. The board was divided into the following sections:
 
-![User Stories](https://github.com/Tedbot2000/todo-genie/blob/main/docs/images/UserStories.png)
+![User Stories](assets\images\kanbanboard.png)
 
-**To Do:** This column was where tasks and user stories that were identified but not yet prioritised for development were listed.
+**To Do:** Where tasks for when they are about to be started or planned.
 
 **In Progress:** Tasks actively being worked on were tracked in this column. This provided transparency on ongoing development efforts and helped maintain focus on current objectives.
 
 **Complete:** Successfully completed tasks were shifted to this section for review or testing. This column highlighted the progress made and served as a record of what had been accomplished.
 
-**Future Implementation:** Potential features and ideas for future releases were kept in this column. It allowed for long-term planning while keeping immediate priorities clear.
+**Backlog:** This column was where tasks and user stories that were identified but not yet prioritised for development were listed.
 
+## Wireframes
+
+![Desktop Wireframe](assets\images\wireframedesktop.png)
+![Tablet Wireframe](assets\images\wireframetablet.png)
+![Mobile Wireframe](assets\images\wireframemobile.png)
 
 ### User Stories
 
-User stories were integral to the development of ToDo Genie, ensuring that each feature was designed to meet the needs of the end-users. These stories were mapped onto the Kanban board, guiding the development process from concept to completion.
+User stories were integral to the development of Cornwall Court Finder, ensuring that each feature was designed to meet the needs of the end-users. These stories were mapped onto the Kanban board, guiding the development process from concept to completion.
 
-some example user stories were:
+Example user stories:
 
-    As a logged-in user I can add a new to-do item so that I can keep track of my tasks.
+    As a basketball player, I want to sign up and log into an account, so that I can leave reviews and interact with the website.
 
-        Given a form for adding a new to-do item, when a user submits a valid item, 
-        the item is added to the list and displayed on the main page.
-
-        When a user submits an empty or invalid item, an error message is displayed.
-
-        The newly added item appears at the top of the list or in a designated order.
-
-and:
-
-    As a user I can view responsive content so that I can access and use it easily on 
-    different devices (desktop, tablet, mobile).
-
-        When a user opens the application on different devices, the layout adjusts 
-        appropriately to the screen size.
-
-        The to-do list is readable and usable on all device sizes without horizontal scrolling.
-
-        Buttons, forms, and interactive elements are appropriately sized for touch interaction
-        on mobile devices.
-
-
+    Tasks:
+        Create a user authentication system with sign-up and sign-in functionality.
+        Design a sign-up form with fields for username, email, and password.
+        Implement password hashing for security.
+        Set up a login form to authenticate existing users.
+        Store user credentials securely in a database.
+        Display a logged-in user's name and provide a "Log Out" button.
+        Restrict review-related actions to logged-in users.
+    Acceptance criteria:
+        Users should be able to sign up with a unique username, email, and password.
+        Passwords must be securely hashed before storage.
+        Users should be able to log in using their registered email and password.
+        Logged-in users should see a personalized greeting (e.g., "Welcome, [username]").
+        A "Log Out" button should be available and functional.
+        Only logged-in users should be able to add, edit, or delete reviews.
 
 ## User Interface (UI)
 
-- The application features a clean and minimalistic design, with a focus on usability and accessibility.
-- The task list is displayed in a table format, with columns for task name, status, and actions. These move to two columns on mobile devices.
-- The UI is controlled by simple buttons. These seemed to be particularly appropriate for users with touch screens without making the application unduly difficult for users with large screens.
-- The application uses a responsive design, ensuring that it is usable on various devices and screen sizes.
-
+- The website features a clean, minimalistic design with a focus on usability and ease of navigation, ensuring users can quickly find nearby basketball courts.
+- The UI is controlled through straightforward buttons and interactive elements, ideal for mobile users while maintaining ease of use on larger screens for those browsing on desktops.
+- A responsive design ensures that the site is fully functional across different devices and screen sizes, delivering a smooth experience whether users are accessing it from a smartphone, tablet, or desktop.
 
 ### Wireframes
 
-To visualise the user interface and user experience of the application, two wireframes were created: one for mobile screens and one for desktops. These wireframes provide a low-fidelity representation of the application's layout, navigation, and key features.
+To visualise the user interface and user experience of the application, three wireframes were created: one for mobile screens, one for tablets and one for desktops. These wireframes provide a low-fidelity representation of the application's layout, navigation, and key features.
 
 **Mobile Wireframe**
 
 The mobile wireframe is designed to accommodate the smaller screen size and touch-based interaction of mobile devices. The layout is optimised for portrait mode, with a focus on simplicity and ease of use.
 
-![Mobile Wireframe](https://github.com/Tedbot2000/todo-genie/blob/main/docs/wireframes/MobileWireframe.png)
+![Mobile Wireframe](assets\images\wireframemobile.png)
 
 Key features of the mobile wireframe include:
+
+- A clean and simple nav bar at the top of the screen, allowing users easy access to login/logout features
+- A card-based layout for displaying content, with clear typography and minimal clutter
+- A focus on vertical scrolling, with clear section headers and dividers to guide the user's attention
+- A simple and clear footer.
+
+**Tablet Wireframe**
+
+The tablet wireframe is designed to accommodate the smaller screen size and touch-based interaction of tablet devices. The layout is optimised for portrait mode, with a focus on simplicity and ease of use.
+
+![Tablet Wireframe](assets\images\wireframetablet.png)
+
+Key features of the tablet wireframe include:
 
 - A clean and simple nav bar at the top of the screen, allowing users easy access to login/logout features
 - A card-based layout for displaying content, with clear typography and minimal clutter
@@ -328,7 +367,7 @@ Key features of the mobile wireframe include:
 
 The desktop wireframe takes advantage of the larger screen size and mouse-based interaction to provide a more detailed and feature-rich experience. The layout is optimized for a wider range of screen resolutions and aspect ratios.
 
-![Desktop Wireframe](https://github.com/Tedbot2000/todo-genie/blob/main/docs/wireframes/DesktopWireframe.png)
+![Desktop Wireframe](assets\images\wireframedesktop.png)
 
 Key features of the desktop wireframe include:
 
@@ -547,34 +586,38 @@ By using URL Routing, the ToDo Genie application can decouple the URL structure 
 
 All HTML pages were validated using the W3C Markup Validation Service
 
-signup.html Validation
+base.html Validation
 
-![signup.html Validation](https://github.com/Tedbot2000/todo-genie/blob/main/docs/images/signupGood.png)
+![base.html Validation]()
 
-login.html Validation
+index.html Validation
 
-![login.html Validation](https://github.com/Tedbot2000/todo-genie/blob/main/docs/images/loginGood.png)
+![index.html Validation]()
 
-logout.html Validation
+add_court.html Validation
 
-![logout.html Validation](https://github.com/Tedbot2000/todo-genie/blob/main/docs/images/logoutGood.png)
+![add_court.html Validation]()
 
-edit_task.html Validation
+court_detail.html Validation
 
-![edit_task.html Validation](https://github.com/Tedbot2000/todo-genie/blob/main/docs/images/edit_taskGood.png)
+![court_detail.html Validation]()
 
 
 ## CSS Validation
 
 The style.css file was validated using the W3C CSS Validation Service
 
-![CSS Validtation](https://github.com/Tedbot2000/todo-genie/blob/main/docs/images/cssGood.png)
+![CSS Validtation]()
 
 ## Javascript Validation
 
-The javascript.js file was validate using the validator at JSLint.com
+The js files were validated using the validator at JSLint.com
 
-![Testing with JSLint]()
+![reviews.js]()
+
+![key.js]()
+
+![script.js]()
 
 ## Python Validation
 
@@ -596,7 +639,7 @@ All python files were validated using the Code Institute Python Linter
 
 ### Responsiveness Test
 
-Responsiveness tests were carried out using Firefox with the Accessibility Properties. Different resolutions were tested to ensure no problems with the siteat each one.
+Responsiveness tests were carried out using Google Chrome with the Accessibility Properties. Different resolutions were tested to ensure no problems with the siteat each one.
 
 ### Account Signup, Login, Logout, and Access Tests
 
@@ -607,28 +650,38 @@ Responsiveness tests were carried out using Firefox with the Accessibility Prope
 | Log out           | Pass |
 | Superuser can access admin page | Pass |
 | Non Superusers cannot access admin page | Pass |
-| Users cannot access each others' task lists | Pass |
+| Users cannot edit or review each others' reviews or courts | Pass |
 
 
-### Task Tests
+### Adding Court Tests
 
 | Test              | Result |
 | :---------------- | :------: |
-| User can add a task   | Pass |
-| User cannot enter a task longer than 60 chars | Pass |
-| User cannot enter an empty task  | Pass |
-| User can edit a task   | Pass |
-| User can delete a task | Pass |
-| User can change the status of a task to "In Progress" | Pass |
-| User can change the status of a task to "Complete" | Pass |
-| User can change the status of a task to "Not Started" | Pass |
+| User can add a court   | Pass |
+| Not signed in users cannot add a court   | Pass |
+| User cannot enter an empty court | Pass |
+| User can edit a court   | Fail |
+| User can delete a court | Fail |
+| Admin can approve court through the admin panel | Pass |
 
+Currently users cannot edit or delete courts, this functionality is WIP
+
+### Adding Court Review Tests
+
+| Test              | Result |
+| :---------------- | :------: |
+| User can add a review   | Pass |
+| Not signed in users cannot add a review   | Pass |
+| User cannot enter an empty review | Pass |
+| User can edit a review   | Pass |
+| User can delete a review | Pass |
+| Admin can approve review through the admin panel | Pass |
 
 # Deployment
 
-The repo was created in Github. Code was created and update updated in Gitpod.
+The repo was created in Github. Code was created and update updated in VS Code.
 
-The app was deployed on [Heroku here](https://todo-genie-65081f96d293.herokuapp.com)
+The app was deployed on [Heroku here](https://court-finder-courts-0bc1e2d6a141.herokuapp.com/)
 
 Secret Keys were connected to config vars in Heroku.
 
@@ -640,7 +693,14 @@ The Code Institute PostGres database was cnnected in Heroku.
 Some features which were planned but left for future versions were:
 
 - **dark mode** dark mode that changes theme from light to dark for accessibility 
-- **example 2** example text
+- **fix favicon** favicon currently doesnt load and i cant seem to fix it in any way thats simple
+- **edit/delete courts** 
+- **location field in court model** address field that converts to corrdinates to be used with google maps to display court locations on map
+- **markers on map** markers are clickable and take you to the court page
+- **enter postcode field** be able to enter postcode and have the page change to show the courts nearest to you
+- **indoor/outdoor buttons** add functionality to outdoor/indoor buttons so they filter out indoor or outdoor courts when pressed
+- **am i responsive image** 
 
 # Credits and Thanks
 
+I'd like to thank...
