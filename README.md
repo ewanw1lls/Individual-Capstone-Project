@@ -239,6 +239,8 @@ The Kanban board acted as the cornerstone of project management, providing a rea
 
 **Backlog:** This column was where tasks and user stories that were identified but not yet prioritised for development were listed.
 
+In my Kanban board, I used the MoSCoW prioritisation technique to organise tasks by categorising them into Must-Have, Should-Have and Could-Have. Ensuring that the most critical features and tasks were completed first, while less urgent ones were addressed later.
+
 ### User Stories:
 
 User stories were integral to the development of Cornwall Court Finder, ensuring that each feature was designed to meet the needs of the end-users. These stories were mapped onto the Kanban board, guiding the development process from concept to completion.
@@ -377,7 +379,11 @@ To maintain accuracy and consistency, the form is designed to capture essential 
 
 ## Pair Programming:
 
+Throughout the development of this project, I used AI tools (ChatGPT and Copilot) as part of my pair programming approach. These tools acted as a virtual collaborator, offering suggestions and helping me troubleshoot problems. When working through complex coding challenges, AI assisted in brainstorming solutions and optimising code. This virtual pairing enabled me to rapidly test different approaches and ensured I stayed focused on writing efficient, functional code. It also helped improve my coding style by offering real-time feedback on best practices and suggesting code improvements.
+
 ## Debugging:
+
+AI played a significant role in the debugging process by helping me identify issues in my code and offering potential solutions. It provided insights on error messages, suggesting common fixes and optimisations. During the debugging phase, I utilised AI tools like copilot to analyse and pinpoint logical errors, as well as syntax issues. Copilot was significantly useful in quickly solving line too long errors in the problems section of terminal. This greatly sped up the debugging process, allowing me to correct problems quickly and efficiently. Additionally, AI such as ChatGPT provided explanations for error codes and  why certain bugs occurred and how to avoid them in future code, enhancing my understanding of potential pitfalls and improving my overall development skills.
 
 # Testing and Validation:
 
@@ -505,4 +511,6 @@ Some features which were planned but left for future versions were:
 
 # Credits and Thanks
 
-I'd like to thank...
+Thank you to [Google Maps Dev](https://console.cloud.google.com/google/maps-apis/build?inv=1&invt=Abs-RA&project=gold-optics-454319-d0) for Map code and their API.
+
+Credit also is accreddited to...
