@@ -1,6 +1,6 @@
 // Function to dynamically load the Google Maps API
 function loadMap(apiKey) {
-    const script = document.createElement('script');
+    const script = document.createElement("script");
     script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap`;
     script.async = true;
     script.defer = true;

@@ -8,17 +8,6 @@ from .forms import CourtForm
 from django.utils.text import slugify
 
 
-# from django.views.generic import TemplateView
-
-# class based views go below
-
-# class HomePage(TemplateView):
-#     """
-#     Displays home page"
-#     """
-#     template_name = 'index.html'
-
-
 class CourtList(generic.ListView):
     model = Court
     queryset = Court.objects.filter(status=1)
@@ -142,25 +131,34 @@ def add_court(request):
 
     return render(request, "courts/add_court.html", {"form": form})
 
+
 def court_edit(request, slug, court_id):
     """
     view to edit court submission
     """
-    court = get_object_or_404(Court, pk=court_id, status=1)  # Assuming `status=1` means it's active
+    court = get_object_or_404(
+        Court, pk=court_id, status=1
+    )  # Assuming `status=1` means it's active
     if request.method == "POST":
         court_form = CourtForm(data=request.POST, instance=court)
 
         if court_form.is_valid() and court.author == request.user:
             court = court_form.save(commit=False)
             court.save()
-            messages.add_message(request, messages.SUCCESS, 'Court submission updated!')
+            messages.add_message(
+                request, messages.SUCCESS, 'Court submission updated!'
+            )
         else:
-            messages.add_message(request, messages.ERROR, 'Error updating court submission!')
-            
+            messages.add_message(
+                request, messages.ERROR, 'Error updating court submission!'
+            )
     else:
         court_form = CourtForm(instance=court)
 
-    return render(request, 'court_edit.html', {'form': court_form, 'court': court})
+    return render(
+        request, 'court_edit.html', {'form': court_form, 'court': court}
+    )
+
 
 def court_delete(request, slug, court_id):
     """
@@ -170,8 +168,13 @@ def court_delete(request, slug, court_id):
 
     if court.author == request.user:
         court.delete()
-        messages.add_message(request, messages.SUCCESS, 'Court submission deleted!')
+        messages.add_message(
+            request, messages.SUCCESS, 'Court submission deleted!'
+        )
     else:
-        messages.add_message(request, messages.ERROR, 'You can only delete your own court submissions!')
+        messages.add_message(
+            request, messages.ERROR,
+            'You can only delete your own court submissions!'
+        )
 
-    return HttpResponseRedirect(reverse('court_list'))  # Assuming 'court_list' is the list of courts page
+    return HttpResponseRedirect(reverse('index'))

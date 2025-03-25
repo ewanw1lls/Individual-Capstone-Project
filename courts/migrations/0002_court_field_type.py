@@ -13,6 +13,10 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='court',
             name='field_type',
-            field=models.CharField(choices=[('Indoor', 'Indoor'), ('Outdoor', 'Outdoor')], default='Outdoor', max_length=7),
+            field=models.CharField(
+                choices=[('Indoor', 'Indoor'), ('Outdoor', 'Outdoor')],
+                default='Outdoor',
+                max_length=7
+            ),
         ),
     ]

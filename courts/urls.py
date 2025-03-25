@@ -12,6 +12,6 @@ urlpatterns = [
          views.review_delete, name='review_delete'),
     path('court/<slug:slug>/<int:court_id>/edit/',
          views.court_edit, name='court_edit'),
-    path('court/<slug:slug>/<int:court_id>/delete/',
+    path('delete_court/<slug:slug>/<int:court_id>/',
          views.court_delete, name='court_delete'),
 ]

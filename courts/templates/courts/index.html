@@ -36,10 +36,9 @@
             <!-- Postcode Search -->
             <form method="POST">
                 {% csrf_token %}
-                <label for="postcode" class="form-label">
-                    <h4>Enter your Postcode Below:</h4>
-                </label>
-                <input type="text" id="postcode" name="address" class="form-control mb-2" placeholder="e.g. TR7 0G9"
+                <h4>Enter your Postcode Below:</h4>
+                <label for="postcode" class="form-label"></label>
+                <input type="text" id="postcode" name="address" class="form-control mb-2" placeholder="TEMPORARILY DISABLED"
                     required>
                 <button type="submit" class="btn btn-primary w-100">Find Courts</button>
             </form>
@@ -86,7 +85,7 @@
                             </a>
                             <p class="card-text">{{ court.excerpt }}</p>
 
-                            <hr />
+                            <hr>
                             <p class="card-text text-muted h6">{{ court.created_on}} | {{ court.rating }} <i class="fa-solid fa-star gold-star"></i></p>
                         </div>
                     </div>

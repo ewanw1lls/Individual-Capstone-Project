@@ -12,24 +12,39 @@
         <p class="court-subtitle">{{ court.author }} | {{ court.created_on }} | {{ court.rating }} <i
             class="fa-solid fa-star gold-star"></i></p>
         <p class="court-subtitle"><strong>Court Type: </strong>{{ court.get_court_type_display }}</p>
-        <!-- Update and delete form -->
-        {% if court.author == request.user %}
-        <!-- Display the edit and delete buttons only if the logged-in user is the author -->
-        <button class="btn btn-delete" href="{% url 'court_edit' slug=court.slug court_id=court.id %}">Edit Court</button>
-        <button class="btn btn-edit" href="{% url 'court_delete' slug=court.slug court_id=court.id %}">Delete Court</button>
-        {% endif %}
-
-        {% if user.is_authenticated and review.author == user %}
-          <button class="btn btn-delete" data-review_id="{{ review.id }}">Delete</button>
-          <button class="btn btn-edit" data-review_id="{{ review.id }}">Edit</button>
+        <!-- Update and delete court-->
+        {% if user.is_authenticated and court.author == user %}
+        <div>
+          <button class="btn btn-edit" data-court_id="{{ court.id }}">Edit Court</button>
+          <button class="btn btn-delete-court" data-court_id="{{ court.id }}" data-court_slug="{{ court.slug }}">Delete Court</button>
+        </div>  
           {% endif %}
       </div>
       <div class="d-none d-md-block col-md-6 masthead-image">
         {% if "placeholder" in court.image.url %}
         <img class="card-img-top" src="{% static 'images/default.jpg' %}" alt="placeholder image">
         {% else %}
-        <img class="card-img-top" src="{{ court.profile_image.url }}">
+        <img class="card-img-top" src="{{ court.profile_image.url }}" alt="profile image">
         {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Delete confirmation modal for court -->
+<div class="modal fade" id="deleteCourtModal" tabindex="-1" aria-labelledby="deleteCourtModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteCourtModalLabel">Delete Court?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete this court? This action cannot be undone.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <a id="deleteCourtConfirm" href="#" class="btn btn-danger">Delete</a>
       </div>
     </div>
   </div>
@@ -42,6 +57,7 @@
         <!-- The court content goes inside the card-text. -->
         <!-- Use the | safe filter inside the template tags -->
         <article class="card-text">
+          <h3>{{ court.title | safe }}</h3>
           {{ court.content | safe }}
         </article>
       </div>

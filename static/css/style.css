@@ -4,10 +4,10 @@
 :root {
     --primary-font: "Tinos", sans-serif;
     --secondary-font: "Montserrat", sans-serif;
-    --primary-color: ,
-        --secondary-color:,
-        --highlight-color: #c34a36,
-        --highlight-color-light: #ff8066,
+    --primary-color: ;
+    --secondary-color: ;
+    --highlight-color: #c34a36;
+    --highlight-color-light: #ff8066;
 }
 
 /* Global styles */
