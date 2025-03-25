@@ -429,6 +429,16 @@ AI played a significant role in the debugging process by helping me identify iss
 
 # Testing and Validation:
 
+## VSCode Problems tab:
+
+VSCode has helped me identify maybe errors and syntax problems throguh there problems tab, however instances of this have been unavoidable as of right now:
+
+![error in settigns.py](assets/images/settingserror.png)
+
+This errors states that env is imported but unused, however the cause of this error is due to the if statement previously before it.
+
+in settings and env there are a total of 6 errors for line too long, these are all for keys and URL's, hence have been deemed acceptable.
+
 ## HTML Validation:
 
 All HTML pages were validated using the W3C Markup Validation Service, as the base.html is included in the other templates testing for it is done on each other validation.
@@ -553,4 +563,6 @@ Some features which were planned but left for future versions were:
 
 Thank you to [Google Maps Dev](https://console.cloud.google.com/google/maps-apis/build?inv=1&invt=Abs-RA&project=gold-optics-454319-d0) for Map code and their API.
 
-Credit also is accreddited to...
+Credit also is accreddited to Code Institute as many coding principles came from their "I think therefore I blog" walkthrough module.
+
+I would like to thank my entire bootcamp cohort and facilitators for being great people and coders!!!
