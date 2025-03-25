@@ -45,6 +45,10 @@ for (let button of deleteButtons) {
       deleteModal.show();
     });
   }
+  
+
+// Code for Court Delete Button and Modal
+
 
 const deleteCourtModal = new bootstrap.Modal(document.getElementById("deleteCourtModal"));
 const deleteCourtButtons = document.getElementsByClassName("btn-delete-court");

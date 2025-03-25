@@ -221,7 +221,7 @@ The model structure of the basketball court finder website follows a minimal des
 - User passwords hashed by Django's auth system
 - Foreign key relationships protect data integrity
 - env.py file used for PostgreSQL URL amongst other sensitive keys
-- google maps api key currently in js file as env wasnt complying 
+- google maps api key currently in .gitignore js file as env wasnt complying 
 
 ### Agile Development: Creating a Kanban Board on GitHub
 
@@ -311,6 +311,7 @@ While the colour scheme was planned during the project's early stages, it hasn't
 
 Although the colour scheme has yet to be fully implemented—currently only visible in button styles—having a well-defined palette to refer back to will streamline the development and styling process. By using a gradient of complementary colours, the site will achieve a smooth, cohesive, and visually calming aesthetic. This approach ensures a balanced and engaging user experience while reinforcing the site's overall theme.
 
+# Features:
 
 ## Templates:
 
@@ -360,13 +361,28 @@ The index.html template serves as the main page of the application, displaying a
 #### Content:
 The index.html template displays the following content:
 
-- **:** 
-- **:** 
-- **:**  
-- **:** 
-- **:** 
+**Title/Slogan:**
+A brief, catchy title or slogan that reflects the mission of the website and encourages users to explore further. 
 
-![index.html]()
+**Google Maps Interactive Map:**
+An interactive map powered by the Google Maps API. Users will be able to zoom in, move around, and get a clear view of the area. In the future, custom markers will be displayed for basketball courts, making it easy for users to spot their options visually.
+
+**Courts Near You:**
+Currently showcasing the three best-rated courts nearby. This feature is a work-in-progress, but the goal is to help users find highly rated options near their location quickly.
+
+**Enter Postcode Text Field:**
+A text input field where users can enter their postcode to find courts nearby. Right now, this feature is temporarily disabled, with placeholder text indicating that the functionality will be available soon.
+
+**Court Type:**
+Buttons to filter by court type, either indoor or outdoor. This feature is still under development, but it will allow users to choose their preferred court type to narrow down their options.
+
+**All Courts Displayed:**
+A comprehensive list of all basketball courts available in the system. Users can scroll through the list, and each court will have a clickable entry that provides more detailed information, including the court’s surface type, availability, and user reviews. This helps users quickly find the right court for their needs.
+
+**Paginated Next Page Button:**
+A button to navigate to the next page of courts, enabling users to easily browse through a large number of listings. This will load more courts when clicked.
+
+![index.html](assets\images\indexhtml.png)
 
 
 ### Add Court Page Template (add_court.html):
@@ -374,6 +390,32 @@ The index.html template displays the following content:
 The template features a structured form that allows users to add new basketball courts to the site. This form is built using fields from the previously defined Court Model, ensuring that all submitted data aligns with the database structure.
 
 To maintain accuracy and consistency, the form is designed to capture essential court details, such as location, surface type, and hoop condition. Additionally, an approval process is implemented, requiring submissions to be reviewed before appearing on the site. This helps prevent inaccurate or duplicate entries, ensuring that the court listings remain reliable and valuable for users.
+
+![add_court.html](assets\images\add_courthtml.png)
+
+### Court Details Page Template (court_details.html):
+
+**Court Title:** The name of the court, providing easy identification for users.
+
+**Author:** The user who added the court to the database, the person who submitted the court’s details.
+
+**Date Added:** Displays when the court was added to the platform, helping users know how current the information is.
+
+**Rating (1-10):** A rating system from 1 to 10 where users can rate the court based on their experience. This provides an overall sense of the court’s quality, including factors such as the court’s condition, location, and accessibility.
+
+**Court Image:** A photo of the court, giving users a visual idea of the facility. It helps users get a sense of the environment before visiting.
+
+**Court Type:** Indicates whether the court is indoor or outdoor, so users know what to expect when they arrive. This is crucial for planning based on weather conditions or personal preferences.
+
+**Content:** A detailed description of the court’s features and location, including any amenities like lighting, seating, or nearby facilities. This section can also highlight any unique features the court offers, such as a full-sized or half-sized court, adjustable hoops, or whether it’s accessible to wheelchair users.
+
+**Reviews:** Users can share their personal experiences with the court by adding reviews. Reviews can cover various aspects, such as the quality of the court, the atmosphere, ease of access, and general experience. These reviews can help others decide if the court meets their needs.
+
+**Add Review:** Users can submit their own reviews of the court, rating it on a scale from 1 to 10 and leaving comments based on their experience.
+
+**Edit/Delete Reviews:** Users are able to edit or delete their reviews. This feature allows for corrections if a user changes their opinion or notices a mistake in their review. Reviews are user-specific, so each user can only edit or delete their own feedback.
+
+![court_details.html](assets\images\court_detailshtml.png)
 
 # AI:
 
@@ -434,8 +476,6 @@ The js files were validated using the validator at JSLint.com
 
 ![key.js]()
 
-![courtbtn.js]()
-
 ## Python Validation:
 
 All python files were validated using the Code Institute Python Linter and no errors were found 
@@ -472,7 +512,7 @@ Responsiveness tests were carried out using Google Chrome with the Accessibility
 | User can delete a court | Fail |
 | Admin can approve court through the admin panel | Pass |
 
-Currently users cannot edit or delete courts, this functionality is WIP
+Currently users cannot edit or delete courts, this **functionality is WIP**
 
 ### Adding Court Review Tests:
 
@@ -509,7 +549,7 @@ Some features which were planned but left for future versions were:
 - **indoor/outdoor buttons** add functionality to outdoor/indoor buttons so they filter out indoor or outdoor courts when pressed
 - **am i responsive image** 
 
-# Credits and Thanks
+# Credits and Thanks:
 
 Thank you to [Google Maps Dev](https://console.cloud.google.com/google/maps-apis/build?inv=1&invt=Abs-RA&project=gold-optics-454319-d0) for Map code and their API.
 

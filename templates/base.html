@@ -126,27 +126,6 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
 
-    <!-- Google Map script-->
-    <script async src="/static/js/key.js"></script>
-
-    <script>
-        function initMap() {
-            // Ensure Google Maps API is loaded before using it
-            if (typeof google === "undefined") {
-                console.error("Google Maps API failed to load.");
-                return;
-            }
-
-            const map = new google.maps.Map(document.getElementById("map"), {
-                center: {
-                    lat: 50.266,
-                    lng: -5.052
-                }, // Example: Cornwall, UK
-                zoom: 10,
-            });
-        }
-    </script>
-
     {% block extras %}
     {% endblock %}
 </body>

@@ -17,6 +17,10 @@ class CourtList(generic.ListView):
 
 # function based views go below
 
+def top_courts(request):
+    courts = Court.objects.all()[:3]
+    return render(request, 'index.html', {'courts': courts})
+
 
 def court_detail(request, slug):
     """
