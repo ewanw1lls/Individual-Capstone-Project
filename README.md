@@ -229,7 +229,7 @@ For the development of Cornwall Court FInder, I adopted an Agile approach to ens
 
 The Kanban board acted as the cornerstone of project management, providing a real-time snapshot of task progression. The board was divided into the following sections:
 
-![User Stories](assets\images\kanbanboard.png)
+![User Stories](assets/images/kanbanboard.png)
 
 **To Do:** Where tasks for when they are about to be started or planned.
 
@@ -281,25 +281,25 @@ To visualise the user interface and user experience of the application, three wi
 
 The mobile wireframe is designed for the smaller screen and touch-based navigation of mobile devices. Optimised for portrait orientation, it focuses on simplicity and usability.
 
-![Mobile Wireframe](assets\images\wireframemobile.png)
+![Mobile Wireframe](assets/images/wireframemobile.png)
 
 **Tablet Wireframe:**
 
 The tablet wireframe is tailored for the smaller screen and touch-based interaction of tablet devices. It is optimised for portrait mode, emphasising simplicity and ease of use.
 
-![Tablet Wireframe](assets\images\wireframetablet.png)
+![Tablet Wireframe](assets/images/wireframetablet.png)
 
 **Desktop Wireframe:**
 
 The desktop wireframe leverages the larger screen and mouse-based interaction to deliver a more detailed, feature-rich experience. Its layout is designed to adapt to various screen resolutions and aspect ratios.
 
-![Desktop Wireframe](assets\images\wireframedesktop.png)
+![Desktop Wireframe](assets/images/wireframedesktop.png)
 
 ### Colour Scheme:
 
 While the colour scheme was planned during the project's early stages, it hasn't been fully implemented yet, as functionality has been the priority. The colour scheme was chosen with the help of [ColorSpace](https://mycolor.space/?hex=%23FF9671&sub=1), a colour palette generation website.
 
-![Colour Pallete from ColorSpace](assets\images\colourpallete.png)
+![Colour Pallete from ColorSpace](assets/images/colourpallete.png)
 
 ### Primary colours:
 
@@ -382,7 +382,7 @@ A comprehensive list of all basketball courts available in the system. Users can
 **Paginated Next Page Button:**
 A button to navigate to the next page of courts, enabling users to easily browse through a large number of listings. This will load more courts when clicked.
 
-![index.html](assets\images\indexhtml.png)
+![index.html](assets/images/indexhtml.png)
 
 
 ### Add Court Page Template (add_court.html):
@@ -391,7 +391,7 @@ The template features a structured form that allows users to add new basketball 
 
 To maintain accuracy and consistency, the form is designed to capture essential court details, such as location, surface type, and hoop condition. Additionally, an approval process is implemented, requiring submissions to be reviewed before appearing on the site. This helps prevent inaccurate or duplicate entries, ensuring that the court listings remain reliable and valuable for users.
 
-![add_court.html](assets\images\add_courthtml.png)
+![add_court.html](assets/images/add_courthtml.png)
 
 ### Court Details Page Template (court_details.html):
 
@@ -415,7 +415,7 @@ To maintain accuracy and consistency, the form is designed to capture essential 
 
 **Edit/Delete Reviews:** Users are able to edit or delete their reviews. This feature allows for corrections if a user changes their opinion or notices a mistake in their review. Reviews are user-specific, so each user can only edit or delete their own feedback.
 
-![court_details.html](assets\images\court_detailshtml.png)
+![court_details.html](assets/images/court_detailshtml.png)
 
 # AI:
 
@@ -444,10 +444,10 @@ in settings and env there are a total of 6 errors for line too long, these are a
 All HTML pages were validated using the W3C Markup Validation Service, as the base.html is included in the other templates testing for it is done on each other validation.
 
 index.html Validation
-![index.html Validation](assets\images\valid.png)
+![index.html Validation](assets/images/valid.png)
 
 add_court.html Validation
-![add_court.html Validation](assets\images\valid.png)
+![add_court.html Validation](assets/images/valid.png)
 
 some time had to be spend fixing court_type not being rendered in a p to avoid validaiton error this was the corrected code
 
@@ -470,13 +470,13 @@ some time had to be spend fixing court_type not being rendered in a p to avoid v
       </fieldset>
 
 court_detail.html Validation
-![court_detail.html Validation](assets\images\valid.png)
+![court_detail.html Validation](assets/images/valid.png)
 
 ## CSS Validation:
 
 The style.css file was validated using the W3C CSS Validation Service
 
-![CSS Validtation](assets\images\CSSvalidation.png)
+![CSS Validtation](assets/images/CSSvalidation.png)
 
 ## Javascript Validation:
 
@@ -490,7 +490,7 @@ The js files were validated using the validator at JSLint.com
 
 All python files were validated using the Code Institute Python Linter and no errors were found 
 
-![Python vaidation](assets\images\pythonlint.png)
+![Python vaidation](assets/images/pythonlint.png)
 
 
 ## Tests:
