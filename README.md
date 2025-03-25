@@ -482,9 +482,13 @@ The style.css file was validated using the W3C CSS Validation Service
 
 The js files were validated using the validator at JSLint.com
 
-![reviews.js]()
+![reviews.js](assets\images\JSLINTerror.png)
 
-![key.js]()
+reviews.js displayed 2 errors, both of which i can't figure out
+
+![key.js](assets\images\noerrorJSLINT.png)
+
+key.js is all good.
 
 ## Python Validation:
 
