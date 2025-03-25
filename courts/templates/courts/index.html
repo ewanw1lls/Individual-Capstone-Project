@@ -21,11 +21,11 @@
         <div class="col-md-6">
             <!-- Nearby Courts List -->
             <div class="mb-3">
-                <h4>Courts Near You:</h4>
+                <h4>Top Courts Near You:</h4>
                 <ul class="list-group">
                     {% for court in courts %}
                     <li class="list-group-item">
-                        <strong>{{ court.name }}</strong> - Rating: {{ court.rating }}
+                        <strong>{{ court.title }}</strong> - Rating: {{ court.rating }}
                     </li>
                     {% empty %}
                     <li class="list-group-item">No courts found.</li>
@@ -115,6 +115,27 @@
 </div>
 
 <!-- index.html content ends here -->
+
+<!-- Google Map script-->
+<script async src="/static/js/key.js"></script>
+
+<script>
+    function initMap() {
+        // Ensure Google Maps API is loaded before using it
+        if (typeof google === "undefined") {
+            console.error("Google Maps API failed to load.");
+            return;
+        }
+
+        const map = new google.maps.Map(document.getElementById("map"), {
+            center: {
+                lat: 50.266,
+                lng: -5.052
+            }, // Example: Cornwall, UK
+            zoom: 10,
+        });
+    }
+</script>
 
 {% endblock %}
 

@@ -4,10 +4,10 @@
 :root {
     --primary-font: "Tinos", sans-serif;
     --secondary-font: "Montserrat", sans-serif;
-    --primary-color: ,
-        --secondary-color:,
-        --highlight-color: #c34a36,
-        --highlight-color-light: #ff8066,
+    --primary-color: ;
+    --secondary-color: ;
+    --highlight-color: #c34a36;
+    --highlight-color-light: #ff8066;
 }
 
 /* Global styles */
@@ -180,6 +180,15 @@ h6 {
     display: inline-block;
     /* Ensures the text and icon are aligned properly */
 }
+
+label[for="id_body"] {
+    display: none;
+  }
+  
+  /* Hide the asterisk */
+  .asteriskField {
+    display: none;
+  }
 
 
 

@@ -17,6 +17,10 @@ class CourtList(generic.ListView):
 
 # function based views go below
 
+def top_courts(request):
+    courts = Court.objects.all()[:3]
+    return render(request, 'index.html', {'courts': courts})
+
 
 def court_detail(request, slug):
     """
@@ -92,8 +96,7 @@ def review_delete(request, slug, review_id):
     """
     view to delete review
     """
-    queryset = Court.objects.filter(status=1)
-    court = get_object_or_404(queryset, slug=slug)
+
     review = get_object_or_404(Review, pk=review_id)
 
     if review.author == request.user:
