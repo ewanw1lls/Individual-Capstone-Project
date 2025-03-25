@@ -389,7 +389,27 @@ index.html Validation
 ![index.html Validation](assets\images\valid.png)
 
 add_court.html Validation
-![add_court.html Validation]()
+![add_court.html Validation](assets\images\valid.png)
+
+some time had to be spend fixing court_type not being rendered in a p to avoid validaiton error this was the corrected code
+
+<!-- Render everything using form.as_p except court_type -->
+      {% for field in form %}
+      {% if field.name != 'court_type' %}
+      <p>
+        {{ field.label_tag }} {{ field }}
+        {% if field.errors %}
+        <span class="error">{{ field.errors }}</span>
+        {% endif %}
+      </p>
+      {% endif %}
+      {% endfor %}
+
+      <!-- Render court_type separately to avoid issues -->
+      <fieldset>
+        <legend>Court Type:</legend>
+        {{ form.court_type }}
+      </fieldset>
 
 court_detail.html Validation
 ![court_detail.html Validation](assets\images\valid.png)

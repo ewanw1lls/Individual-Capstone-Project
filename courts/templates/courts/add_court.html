@@ -17,7 +17,22 @@
     <h2>Add a New Basketball Court:</h2>
     <form method="POST" enctype="multipart/form-data">
       {% csrf_token %}
-      {{ form.as_p }}
+      <!-- Render everything using form.as_p except court_type -->
+      {% for field in form %}
+      {% if field.name != 'court_type' %}
+      <p>
+        {{ field.label_tag }} {{ field }}
+        {% if field.errors %}
+        <span class="error">{{ field.errors }}</span>
+        {% endif %}
+      </p>
+      {% endif %}
+      {% endfor %}
+      <!-- Render court_type separately -->
+      <fieldset>
+        <legend>Court Type:</legend>
+        {{ form.court_type }}
+      </fieldset>
       <button type="submit">Submit</button>
     </form>
   </div>
@@ -41,13 +56,13 @@
   </div>
 </div>
 
-  <!-- JavaScript to Trigger Modal on Success -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      {% if messages %}
-      var successModal = new bootstrap.Modal(document.getElementById('successModal'));
-      successModal.show();
-      {% endif %}
-    });
-  </script>
-  {% endblock %}
+<!-- JavaScript to Trigger Modal on Success -->
+{% if messages %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var successModal = new bootstrap.Modal(document.getElementById('successModal'));
+    successModal.show();
+  });
+</script>
+{% endif %}
+{% endblock %}
