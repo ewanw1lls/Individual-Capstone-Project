@@ -1,4 +1,4 @@
-const editButtons = document.getElementsByClassName("btn-edit");
+const editCourtButtons = document.getElementsByClassName("btn-edit-court");
 const courtText = document.getElementById("id_body");
 const courtForm = document.getElementById("courtForm");
 const submitButton = document.getElementById("submitButton");
@@ -16,8 +16,12 @@ const deleteCourtConfirm = document.getElementById("deleteCourtConfirm");
 * - Updates the submit button's text to "Update".
 * - Sets the form's action attribute to the `edit_review/{reviewId}` endpoint.
 */
-for (let button of editButtons) {
+
+console.log("Review.js loaded");
+
+for (let button of editCourtButtons) {
   button.addEventListener("click", (e) => {
+    console.log("I've been clicked!");
     courtId = e.target.getAttribute("data-court_id");
     let courtContent = document.getElementById(`court${courtId}`).innerText;
     courtText.value = courtContent;
@@ -29,6 +33,7 @@ for (let button of editButtons) {
 
 for (let button of deleteCourtButtons) {
     button.addEventListener("click", (e) => {
+      console.log("I've been clicked!");
       const courtId = e.target.getAttribute("data-court_id");
       const slug = e.target.getAttribute("data-court_slug");
       

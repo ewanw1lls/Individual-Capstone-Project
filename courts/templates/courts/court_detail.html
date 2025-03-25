@@ -15,7 +15,7 @@
         <!-- Update and delete court-->
         {% if user.is_authenticated and court.author == user %}
         <div>
-          <button class="btn btn-edit" data-court_id="{{ court.id }}">Edit Court</button>
+          <button class="btn btn-edit-court" data-court_id="{{ court.id }}">Edit Court</button>
           <button class="btn btn-delete-court" data-court_id="{{ court.id }}" data-court_slug="{{ court.slug }}">Delete Court</button>
         </div>  
           {% endif %}

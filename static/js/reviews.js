@@ -45,3 +45,22 @@ for (let button of deleteButtons) {
       deleteModal.show();
     });
   }
+
+const deleteCourtModal = new bootstrap.Modal(document.getElementById("deleteCourtModal"));
+const deleteCourtButtons = document.getElementsByClassName("btn-delete-court");
+const deleteCourtConfirm = document.getElementById("deleteCourtConfirm");
+
+
+for (let button of deleteCourtButtons) {
+    button.addEventListener("click", (e) => {
+      console.log("I've been clicked!");
+      const courtId = e.target.getAttribute("data-court_id");
+      const slug = e.target.getAttribute("data-court_slug");
+      
+      // Update the delete confirmation link with both the slug and courtId
+      deleteCourtConfirm.href = `/delete_court/${slug}/${courtId}/`;  // Adjusted URL for court delete
+      
+      // Show the court deletion confirmation modal
+      deleteCourtModal.show();
+    });
+  }
