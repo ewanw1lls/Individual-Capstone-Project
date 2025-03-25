@@ -259,7 +259,7 @@ Example user stories:
         Users should be able to sign up with a unique username, email, and password.
         Passwords must be securely hashed before storage.
         Users should be able to log in using their registered email and password.
-        Logged-in users should see a personalized greeting (e.g., "Welcome, [username]").
+        Logged-in users should see a personalised greeting (e.g., "Welcome, [username]").
         A "Log Out" button should be available and functional.
         Only logged-in users should be able to add, edit, or delete reviews.
 
@@ -277,41 +277,21 @@ To visualise the user interface and user experience of the application, three wi
 
 **Mobile Wireframe:**
 
-The mobile wireframe is crafted to suit the smaller screen size and touch-based navigation of mobile devices. Optimised for portrait orientation, the layout prioritises simplicity and ease of use.
+The mobile wireframe is designed for the smaller screen and touch-based navigation of mobile devices. Optimised for portrait orientation, it focuses on simplicity and usability.
 
-![Mobile Wireframe](assets\images\mobiletablet.png)
-
-Key features of the mobile wireframe include:
--A streamlined navigation bar at the top, offering users quick access to login/logout functions
--A card-based layout to present content clearly, with legible typography and minimal distractions
--A focus on vertical scrolling, with prominent section headers and dividers to direct the user's attention
--A straightforward and unobtrusive footer for easy navigation.
+![Mobile Wireframe](assets\images\wireframemobile.png)
 
 **Tablet Wireframe:**
 
-The tablet wireframe is designed to accommodate the smaller screen size and touch-based interaction of tablet devices. The layout is optimised for portrait mode, with a focus on simplicity and ease of use.
+The tablet wireframe is tailored for the smaller screen and touch-based interaction of tablet devices. It is optimised for portrait mode, emphasising simplicity and ease of use.
 
 ![Tablet Wireframe](assets\images\wireframetablet.png)
 
-Key features of the tablet wireframe include:
-
-- A clean and simple nav bar at the top of the screen, allowing users easy access to login/logout features
-- A card-based layout for displaying content, with clear typography and minimal clutter
-- A focus on vertical scrolling, with clear section headers and dividers to guide the user's attention
-- A simple and clear footer
-
 **Desktop Wireframe:**
 
-The desktop wireframe takes advantage of the larger screen size and mouse-based interaction to provide a more detailed and feature-rich experience. The layout is optimized for a wider range of screen resolutions and aspect ratios.
+The desktop wireframe leverages the larger screen and mouse-based interaction to deliver a more detailed, feature-rich experience. Its layout is designed to adapt to various screen resolutions and aspect ratios.
 
 ![Desktop Wireframe](assets\images\wireframedesktop.png)
-
-Key features of the desktop wireframe include:
-
-- A more comprehensive top navigation bar, with clear menu items and the current login status of the user
-- A multi-column layout for displaying content, with clear headings and subheadings
-- A focus on verticle scrolling, with clear section headers and dividers to guide the user's attention
-- A simple and clear footer
 
 ### Colour Scheme:
 
@@ -321,7 +301,7 @@ While the colour scheme was planned during the project's early stages, it hasn't
 
 ### Primary colours:
 
-- **lightsalmon (#ff9671):** Lightsalmon was chosen for the website’s color scheme because of its close resemblance to the classic orange-brown of a real basketball. This subtle connection helps create an immediate association with the sport, making the website feel more familiar and relevant to players. The warm and energetic tone of lightsalmon also adds a welcoming and modern touch, helping to engage users while maintaining a visually appealing design.
+- **lightsalmon (#ff9671):** Lightsalmon was chosen for the website’s colour scheme because of its close resemblance to the classic orange-brown of a real basketball. This subtle connection helps create an immediate association with the sport, making the website feel more familiar and relevant to players. The warm and energetic tone of lightsalmon also adds a welcoming and modern touch, helping to engage users while maintaining a visually appealing design.
 
 - **firebrick (#c34a36):**Firebrick was selected to complement lightsalmon, offering a deeper, more grounded contrast that enhances readability and visual hierarchy. Its rich, reddish hue mirrors the darker accents found on basketball courts, such as boundary lines or key markings, reinforcing the basketball theme. Firebrick adds a bold and confident feel to the site, ensuring key elements stand out while maintaining a cohesive and dynamic look.
 
@@ -331,7 +311,6 @@ Although the colour scheme has yet to be fully implemented—currently only visi
 
 
 ## Templates:
-
 
 ### Base Template (`base.html`):
 
@@ -385,14 +364,20 @@ The index.html template displays the following content:
 - **:** 
 - **:** 
 
-![Task List Widescreen]()
-![Task List Widescreen]()
+![index.html]()
+
 
 ### Add Court Page Template (add_court.html):
 
 The template features a structured form that allows users to add new basketball courts to the site. This form is built using fields from the previously defined Court Model, ensuring that all submitted data aligns with the database structure.
 
 To maintain accuracy and consistency, the form is designed to capture essential court details, such as location, surface type, and hoop condition. Additionally, an approval process is implemented, requiring submissions to be reviewed before appearing on the site. This helps prevent inaccurate or duplicate entries, ensuring that the court listings remain reliable and valuable for users.
+
+# AI:
+
+## Pair Programming:
+
+## Debugging:
 
 # Testing and Validation:
 
@@ -423,22 +408,13 @@ The js files were validated using the validator at JSLint.com
 
 ![key.js]()
 
-![script.js]()
+![courtbtn.js]()
 
 ## Python Validation:
 
-All python files were validated using the Code Institute Python Linter
+All python files were validated using the Code Institute Python Linter and no errors were found 
 
-![Python vaidation app_adapters.py]()
-![Python vaidation app_admin.py]()
-![Python vaidation app_apps_py.png]()
-![Python vaidation app_models_py.png]()
-![Python vaidation app_urls.py]()
-![Python vaidation app_views.py]()
-![Python vaidation proj_asgi.py]()
-![Python vaidation proj_setting.py]()
-![Python vaidation proj_urls.py]()
-![Python vaidation proj_wsgi.py]()
+![Python vaidation](assets\images\pythonlint.png)
 
 
 ## Tests:
