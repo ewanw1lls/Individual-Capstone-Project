@@ -19,17 +19,42 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Court',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID'
+                    )),
                 ('title', models.CharField(max_length=200, unique=True)),
                 ('slug', models.SlugField(max_length=200, unique=True)),
                 ('content', models.TextField()),
                 ('created_on', models.DateTimeField(auto_now_add=True)),
-                ('status', models.IntegerField(choices=[(0, 'Draft'), (1, 'Published')], default=0)),
-                ('rating', models.DecimalField(blank=True, decimal_places=1, max_digits=3, null=True, validators=[django.core.validators.MinValueValidator(0.0), django.core.validators.MaxValueValidator(10.0)])),
-                ('profile_image', cloudinary.models.CloudinaryField(default='placeholder', max_length=255, verbose_name='image')),
+                ('status', models.IntegerField(
+                    choices=[(0, 'Draft'), (1, 'Published')],
+                    default=0
+                )),
+                ('rating', models.DecimalField(
+                    blank=True,
+                    decimal_places=1,
+                    max_digits=3,
+                    null=True,
+                    validators=[
+                        django.core.validators.MinValueValidator(0.0),
+                        django.core.validators.MaxValueValidator(10.0)
+                    ]
+                )),
+                ('profile_image', cloudinary.models.CloudinaryField(
+                    default='placeholder',
+                    max_length=255,
+                    verbose_name='image'
+                )),
                 ('excerpt', models.TextField(blank=True)),
                 ('updated_on', models.DateTimeField(auto_now=True)),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='courts', to=settings.AUTH_USER_MODEL)),
+                ('author', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE,
+                    related_name='courts',
+                    to=settings.AUTH_USER_MODEL
+                )),
             ],
             options={
                 'ordering': ['-created_on'],
@@ -38,12 +63,25 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Review',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(
+                    auto_created=True,
+                    primary_key=True,
+                    serialize=False,
+                    verbose_name='ID'
+                )),
                 ('body', models.TextField()),
                 ('approved', models.BooleanField(default=False)),
                 ('created_on', models.DateTimeField(auto_now_add=True)),
-                ('Court', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='reviews', to='courts.court')),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='reviewer', to=settings.AUTH_USER_MODEL)),
+                ('Court', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE,
+                    related_name='reviews',
+                    to='courts.court'
+                )),
+                ('author', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE,
+                    related_name='reviewer',
+                    to=settings.AUTH_USER_MODEL
+                )),
             ],
             options={
                 'ordering': ['created_on'],

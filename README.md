@@ -31,27 +31,27 @@ Find. Play. Ball. – Cornwall’s Courts at Your Fingertips!
 ![Responsive Design]()
 
 
-## User Experience (UX)
+## User Experience (UX):
 
 Cornwall Court Finder is designed as a simple yet powerful tool for basketball players who value convenience, accuracy, and ease of use. The website’s UX design prioritises simplicity and clarity, providing users with an intuitive interface to find, review, and update court information effortlessly. With a clean and mobile-friendly aesthetic, CFF ensures players can focus on what matters most—getting on the court and playing.
 
-### Site User
+### Site User:
 
 The primary users of CFF are basketball players of all levels who need a quick and reliable way to find and review courts in Cornwall. These users may include casual players, dedicated ballers, and newcomers looking for a place to play. They appreciate the website’s user-friendly design, which allows them to easily search for courts, check reviews, and update court statuses without hassle. These players value convenience, accuracy, and a tool that adapts to their needs, helping them get on the court with minimal effort.
 
-### Goal
+### Goal:
 
 CFF aims to provide basketball players with a seamless and efficient way to discover and review courts, ensuring they can easily find the best places to play. By offering key features such as court search, user reviews, and real-time status updates (with potential future additions like game scheduling and player connections), the website helps players plan their games with ease. The goal is to create a user-focused, mobile-friendly experience that simplifies finding and sharing court information, making it easier for players to get on the court and enjoy the game without hassle.
 
 
-## Database Structure & Purpose
+## Database Structure & Purpose:
 
-### Overview
+### Overview:
 CFF uses a PostgreSQL database to store user and task information. The application implements a straightforward database design focusing on the essential requirements of a task management system while maintaining data integrity and user data separation.
 
-### Core Models
+### Core Models:
 
-#### User Model (Django Built-in)
+#### User Model (Django Built-in):
 The application utilises Django's built-in `User` model from `django.contrib.auth.models`.
 
 **Fields:**
@@ -64,7 +64,7 @@ The application utilises Django's built-in `User` model from `django.contrib.aut
 - `is_active` (BooleanField)
 - `date_joined` (DateTimeField)
 
-#### Court Model (Custom)
+#### Court Model (Custom):
 The `Court` model represents individual basketball courts in the system.
 
 **Fields:**
@@ -112,8 +112,6 @@ class Court(models.Model):
     def __str__(self):
         return f"{self.title} | written by {self.author}"
 ```
-
-### Field Details
 
 #### Court Model Fields:
 1. **title**
@@ -185,7 +183,7 @@ class Court(models.Model):
 - Default: "Outdoor"
 - Purpose: Specifies whether the court is indoor or outdoor
 
-## Database Relationships
+## Database Relationships:
 
 The Entity Relationship Diagram is intentionally straightforward to maintain a clear focus on the Minimum Viable Product (MVP).
 
@@ -280,6 +278,8 @@ To visualise the user interface and user experience of the application, three wi
 **Mobile Wireframe:**
 
 The mobile wireframe is crafted to suit the smaller screen size and touch-based navigation of mobile devices. Optimised for portrait orientation, the layout prioritises simplicity and ease of use.
+
+![Mobile Wireframe](assets\images\mobiletablet.png)
 
 Key features of the mobile wireframe include:
 -A streamlined navigation bar at the top, offering users quick access to login/logout functions

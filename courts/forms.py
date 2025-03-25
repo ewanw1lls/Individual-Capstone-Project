@@ -12,7 +12,7 @@ class CourtForm(forms.ModelForm):
     class Meta:
         model = Court
         fields = [
-            'title', 'slug', 'content', 'rating',
+            'title', 'content', 'rating',
             'profile_image', 'excerpt', 'court_type'
         ]
 

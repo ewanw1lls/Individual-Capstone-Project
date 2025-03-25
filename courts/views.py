@@ -8,17 +8,6 @@ from .forms import CourtForm
 from django.utils.text import slugify
 
 
-# from django.views.generic import TemplateView
-
-# class based views go below
-
-# class HomePage(TemplateView):
-#     """
-#     Displays home page"
-#     """
-#     template_name = 'index.html'
-
-
 class CourtList(generic.ListView):
     model = Court
     queryset = Court.objects.filter(status=1)
@@ -188,5 +177,4 @@ def court_delete(request, slug, court_id):
             'You can only delete your own court submissions!'
         )
 
-    # Assuming 'court_list' is the list of courts page
-    return HttpResponseRedirect(reverse('court_list'))
+    return HttpResponseRedirect(reverse('index'))
